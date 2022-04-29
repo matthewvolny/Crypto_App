@@ -1,4 +1,4 @@
-const userInfo = { id: 1, name: "Ben", password: 123456789 };
+const userInfo = { id: 1, name: "Robert", password: 123456789 };
 
 //!"quantity" being displayed in the legend and reflected in slice size
 //!"percentage" being displayed in center of donut

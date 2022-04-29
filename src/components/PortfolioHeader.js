@@ -26,17 +26,22 @@ export default function PortfolioHeader({ accountData, coinData }) {
         <div className="portfolio-account-value-container">
           <div className="portfolio-header-price">
             $
-            {(accountData?.accountBalanceChartData.hourData[
-              accountData?.accountBalanceChartData.hourData.length - 1
-            ].value).toLocaleString("en-US")}
+            {Number(
+              accountData?.accountBalanceChartData.hourData[
+                accountData?.accountBalanceChartData.hourData.length - 1
+              ].value
+            )
+              .toFixed(2)
+              .toLocaleString("en-US")}
           </div>
           <div className="portfolio-header-percent">
             {<FindLidoStakedEtherPercentChange24hr />}%
           </div>
         </div>
-        <div className="portfolio-header-id">*** *** 1473</div>
+        <div className="portfolio-header-id">
+          <span className="account-number-stars">*** ***</span> 1473
+        </div>
       </div>
-      <SearchBar />
     </div>
   );
 }

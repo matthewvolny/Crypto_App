@@ -1,24 +1,27 @@
 .portfolio-header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
   align-items: flex-start;
   /* border: 1px solid red; */
-  width: 100%;
+  /* margin-left: 3.1em; */
+  margin-left: 1.5em;
   height: 100%;
 }
 
 .portfolio-header-name {
-  font-size: 2rem;
-  padding-left: 3.7rem;
-  /* border: 1px solid purple; */
+  color: #5e80ff;
+  font-weight: bold;
+  font-size: 2.1rem;
+  /* padding-left: 3.7rem; */
+  letter-spacing: 0.08rem;
+  margin-top: 0.25em;
 }
 
 .portfolio-account-value-container {
   display: flex;
   align-items: center;
-  padding-left: 3.7rem;
-  margin-top: 0.6rem;
+  margin-top: 0.7rem;
   /* border: 1px solid purple; */
 }
 
@@ -27,16 +30,29 @@
 }
 
 .portfolio-header-price {
-  font-size: 1.8rem;
+  color: #5e80ff;
+  font-weight: bold;
+  font-size: 1.7rem;
+  letter-spacing: 0.04rem;
 }
 
 .portfolio-header-percent {
   margin-left: 0.5em;
+  padding-top: 0.3em;
+  font-size: 1.1rem;
+  letter-spacing: 0.04rem;
 }
 
 .portfolio-header-id {
-  margin-top: 0.6rem;
-  font-size: 1.2em;
-  /* border: 1px solid tan; */
-  padding-left: 3.7rem;
+  margin-top: 0.7rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 0.04rem;
+  color: #5e80ff;
+  letter-spacing: 0.04rem;
+}
+
+.account-number-stars {
+  position: relative;
+  top: 4px;
 }

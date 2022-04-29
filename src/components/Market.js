@@ -20,25 +20,6 @@ export default function Market() {
   const [lastIndexOfScrollArray, setLastIndexOfScrollArray] = useState();
 
   //!large, small, thumb
-  //const [indexesinView, setIndexesInView] = useState({ index1: 0, index2: 3 });
-  const [indexesinView, setIndexesInView] = useState({
-    index1: 0,
-    index2: 3,
-  });
-
-  // const scrollTrendingCoins = () => {
-  //   // if (indexesinView.index2 > 7) {
-  //   //   setIndexesInView({
-  //   //     index1: 0,
-  //   //     index2: 3,
-  //   //   });
-  //   // } else {
-  //   setIndexesInView({
-  //     index1: indexesinView.index1 + 1,
-  //     index2: indexesinView.index2 + 1,
-  //   });
-  //   // }
-  // };
 
   const scrollTrendingCoins = () => {
     let scrollArrayCopy = [...scrollArray];
@@ -71,8 +52,11 @@ export default function Market() {
   return (
     <div className="trending-coins-list-and-navigation">
       <div className=" trending-coins-scroll-flex">
-        <div onClick={scrollTrendingCoins}>See more ... </div>
-        <img src={doubleArrow} alt="double arrow" />
+        <div className="trending-coins-header">Trending Coins</div>
+        <div className="trending-coins-navigation">
+          <div onClick={scrollTrendingCoins}>See more</div>
+          <img src={doubleArrow} alt="double arrow" />
+        </div>
       </div>
       <div className="trending-coins-list-container">
         {scrollArray?.length !== 0 &&

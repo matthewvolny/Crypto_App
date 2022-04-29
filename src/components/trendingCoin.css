@@ -1,6 +1,6 @@
 .trending-coins-list-and-navigation {
   margin-top: 0.5em;
-  border: 1px solid teal;
+  /* border: 1px solid teal; */
   width: 100%;
   padding-left: 1.5em;
   padding-right: 1.5em;
@@ -9,20 +9,46 @@
 .trending-coins-scroll-flex {
   display: flex;
   align-items: center;
-  border: 1px solid yellowgreen;
-  font-size: 1.2rem;
+  /* border: 1px solid yellowgreen; */
+  /* font-size: 1.2rem; */
 }
 
-.trending-coins-scroll-flex > img {
+.trending-coins-header {
+  color: #5e80ff;
+  font-size: 1.3rem;
+  width: 100%;
+  /* padding-left: 1.5em; */
+  letter-spacing: 0.09rem;
+  font-weight: bold;
+}
+
+.trending-coins-header + * {
+  margin-top: 0;
+}
+
+.trending-coins-navigation {
+  color: rgb(244, 195, 246);
+  /* border: 1px solid yellow; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 45%;
+}
+
+.trending-coins-navigation + * {
+  /* display: inline-block; */
+}
+
+.trending-coins-navigation > img {
   margin-top: 0;
   margin-left: 0.5em;
-  width: 15px;
-  border: 1px solid red;
+  height: 15px;
+  /* border: 1px solid red; */
 }
 
 .trending-coins-list-container {
-  margin-top: 0.5em;
-  border: 1px solid blue;
+  margin-top: 1.15em;
+  /* border: 1px solid blue; */
   display: flex;
   justify-content: space-between;
   /* align-items: center; */
@@ -31,8 +57,10 @@
 
 .trending-coin-container {
   margin-top: 0;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   background-color: white;
+  /* may want to make a very slight grey border around white elements */
+  border: 1px solid rgb(236, 236, 236);
   padding: 1em;
   width: 200px;
 }
@@ -43,7 +71,7 @@
 .trending-coin-image-and-rank-container {
   display: flex;
   justify-content: space-between;
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
 }
 
 .trending-coin-image-and-rank-container > img {
@@ -62,7 +90,7 @@
 .trending-coin-symbol-and-name {
   display: flex;
   align-items: flex-start;
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
 }
 
 .trending-coin-symbol {
@@ -75,7 +103,7 @@
   margin-top: 0;
   margin-left: 0.5em;
   color: grey;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 100%;
   margin-top: 0.25em;
   font-size: 0.9rem;

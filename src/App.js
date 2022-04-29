@@ -423,25 +423,29 @@ function App() {
                   element={<Portfolio accountData={accountData} />}
                 />
                 <Route path="/currencies/:id" element={<Chart />} />
+                <Route path="/currencies" element={<CoinlistHeader />} />
               </Routes>
-              {currentRoute === "portfolio" ? (
-                <HeldCoinsList />
-              ) : currentRoute === "chart" ? (
-                <>
-                  <CoinlistHeader />
-                  <div className="coinlist-container">
-                    <Coinlist coinData={coinData} setCoinData={setCoinData} />
-                  </div>
-                </>
-              ) : (
+              {
+                currentRoute === "portfolio" ? (
+                  <HeldCoinsList />
+                ) : currentRoute === "currencies" ? (
+                  <>
+                    <CoinlistHeader />
+                    <div className="coinlist-container">
+                      <Coinlist coinData={coinData} setCoinData={setCoinData} />
+                    </div>
+                  </>
+                ) : (
+                  <ExchangesList exchangesInfo={exchangesInfo} />
+                )
                 // <NewsFeed />
-                <>
-                  <CoinlistHeader />
-                  <div className="coinlist-container">
-                    <Coinlist coinData={coinData} setCoinData={setCoinData} />
-                  </div>
-                </>
-              )}
+                // <>
+                //   <CoinlistHeader />
+                //   <div className="coinlist-container">
+                //     <Coinlist coinData={coinData} setCoinData={setCoinData} />
+                //   </div>
+                // </>
+              }
             </div>
             <div className="right-flex">
               <LoginAndSignUp />
@@ -451,7 +455,7 @@ function App() {
               ) : currentRoute === "chart" ? (
                 <CoinDescription />
               ) : (
-                <ExchangesList exchangesInfo={exchangesInfo} />
+                <></>
               )}
               {/* <NewsFeed /> */}
             </div>

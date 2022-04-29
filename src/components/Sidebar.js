@@ -25,11 +25,13 @@ export default function Sidebar({ firstCoinData }) {
   const homeButton = document.querySelector(".sidebar-home");
   const marketButton = document.querySelector(".sidebar-market");
   const chartButton = document.querySelector(".sidebar-chart");
+  const coinsButton = document.querySelector(".sidebar-currencies");
 
   const buttonDOMObject = {
     "sidebar-home": homeButton,
     "sidebar-market": marketButton,
     "sidebar-chart": chartButton,
+    "sidebar-currencies": coinsButton,
   };
 
   //handles player actions, highlights and un-highlights action buttons
@@ -178,6 +180,22 @@ export default function Sidebar({ firstCoinData }) {
           }}
         >
           Market
+        </NavLink>
+      </div>
+      <div className="sidebar-currencies">
+        <NavLink
+          className="sidebar-navlink"
+          to={`/currencies`}
+          onMouseEnter={() => {
+            // fetchTrendingCoins();
+          }}
+          onClick={(e) => {
+            handleClick(e);
+            setCurrentRoute("currencies");
+            //setTrending(selectedCoinDataWithDescription);
+          }}
+        >
+          Coins
         </NavLink>
       </div>
       <div className="sidebar-chart">

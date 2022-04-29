@@ -33,21 +33,6 @@ export default function BarChart({ exchange }) {
     return null;
   };
 
-  // const handleLabelSize = (data) => {
-  //   setLabelsSize(50);
-  // };
-
-  // SVGAElement.remove();
-
-  // const svg = document.querySelector(".bar-chart");
-  // const labelEl = svg.select(".metadata-group");
-  // labelEl.attr("font-size", 5 + "px");
-  //  .classed("percentage-label", true)
-  //  .attr("x", labelXPosition)
-  //  .attr("y", labelYPosition)
-  //  .text(textFormatter)
-  //  .attr("font-size", labelsSize + "px");
-
   return (
     // <div
     //   key={Math.floor(Math.random() * 10000)}
@@ -95,8 +80,10 @@ export default function BarChart({ exchange }) {
           //margin={{ top: 5, bottom: 5, left: 5, right: 5 }}
         />
       </div>
-      <div>Total Volume (24hr)</div>
-      <div className="barchart-volume">{exchange.totalVolume1Day}</div>
+      <div className="barchart-volume-header">Total Volume (24hr)</div>
+      <div className="barchart-volume">
+        ${Number(exchange.totalVolume1Day).toLocaleString("en-US")}
+      </div>
     </div>
     // </div>
   );

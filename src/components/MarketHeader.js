@@ -7,9 +7,9 @@ export default function MarketHeader() {
     <div className="market-heading-and-searchbar-flex">
       <div className="market-header">
         <div className="market-header-name">Market Activity</div>
-        <div className="market-account-value-container">
+        {/* <div className="market-account-value-container">
           <div className="market-header-price">Trending coins</div>
-        </div>
+        </div> */}
         {/* <div className="market-header-id">*** *** 1473</div> */}
       </div>
       <SearchBar />

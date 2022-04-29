@@ -3,7 +3,7 @@
   align-items: flex-end;
   width: 100%;
   border: solid 1px rgb(53, 237, 53);
-  min-height: 12%;
+  min-height: 16%;
 }
 
 .market-header {
@@ -18,7 +18,8 @@
 
 .market-header-name {
   font-size: 2rem;
-  padding-left: 3.7rem;
+  /* padding-left: 3.7rem; */
+  padding-left: 1.5rem;
   /* border: 1px solid purple; */
 }
 

@@ -1,23 +1,130 @@
-.held-coins-list-container {
+.held-coins-list-header {
   margin-top: 0;
+  color: #5e80ff;
+  font-size: 1.3rem;
+  width: 100%;
+  padding-left: 1.5em;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  /* border: 1px solid purple; */
+}
+
+.held-coins-list-labels {
+  margin-top: 1.5em;
   display: flex;
   align-items: center;
   flex-direction: column;
-  border: 1px solid red;
+  /* border: 1px solid green; */
+  width: 100%;
+  padding-left: 1.5em;
+  position: relative;
+}
+
+.held-coins-list-labels-inner-container {
+  /* border: gold 1px solid; */
+  height: 100%;
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 146.5%;
+  padding: 0em 0em 2.5em 1.5em;
+}
+
+.held-coins-navigation {
+  /* border: 1px solid teal; */
+  width: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.held-coins-list-labels-inner-container div {
+  margin-top: 0;
+  /* color: #fed425; */
+  /* border: 1px solid purple; */
+  color: black;
+  display: inline-block;
+  font-size: 1.1rem;
+}
+/* .held-coins-sparkline-label {
+  margin-left: 40%;
+} */
+.blank-icon-spacer {
+  margin-left: 0;
+  /* border: 1px solid tan; */
+  width: 8%;
+}
+
+.black-name-spacer {
+  margin-left: 0;
+  width: 23%;
+  /* border: 1px solid orange; */
+}
+
+.held-coins-market-value-label {
+  width: 23%;
+  text-align: center;
+}
+
+.held-coins-daily-return-label {
+  width: 23%;
+  text-align: center;
+}
+
+.held-coins-total-return-label {
+  width: 23%;
+  text-align: center;
+}
+
+.held-coins-list-container {
+  /* margin-top: 0; */
+  margin-top: 1.5em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* border: 1px solid red; */
   width: 100%;
   flex-grow: 1;
+  padding-left: 1.5em;
+  position: relative;
+}
+
+.held-coins-list-inner-container {
+  /* border: gold 1px solid; */
+  height: 100%;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 146.5%;
+  padding: 0em 0em 2.5em 1.5em;
 }
 
 .held-coins-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border: 1px solid green;
+  /* justify-content: space-between; */
+  /* border: 1px solid green; */
+  background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
+  padding: 0.8% 3%;
 }
 
-.held-coins-row > div {
+.held-coins-row > div + div {
   margin-top: 0;
+  /* margin-left: 1%; */
+}
+
+.held-coins-row-image-container {
+  width: 8%;
+  /* border: 1px solid red; */
 }
 
 .held-coins-row-image-container > img {
@@ -25,20 +132,52 @@
 }
 
 .coin-name-and-quantity {
-  margin-left: 0.5em;
+  /* margin-left: 0.5em; */
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  border: 1px solid yellowgreen;
+  /* border: 1px solid yellowgreen; */
+  width: 23%;
 }
 
 .held-coin-name {
   font-size: 1.2rem;
   font-weight: bold;
+  color: #5e80ff;
+}
+
+.held-coin-quantity {
+  margin-top: 0.3em;
+}
+
+/* .coins-held-sparkline-container {
+  border: 1px solid orange;
+  display: flex;
+  align-items: center;
+  width: 25%;
 }
 
 .held-coins-list-container svg {
-  margin-top: 0;
-  width: 225px;
+  width: 100%;
   border: 1px solid purple;
+} */
+
+.held-coin-market-value {
+  /* border: 1px solid teal; */
+  font-size: 1.3rem;
+  width: 23%;
+  text-align: center;
 }
+
+.return-and-percentage {
+  /* border: 1px solid tan; */
+  width: 23%;
+  text-align: center;
+}
+
+/* 
+.held-coins-legend {
+  position: absolute;
+  left: 300px;
+  top: 0px;
+} */

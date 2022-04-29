@@ -436,9 +436,12 @@ function App() {
                       <Coinlist coinData={coinData} setCoinData={setCoinData} />
                     </div>
                   </>
+                ) : currentRoute === "chart" ? (
+                  <NewsFeed />
                 ) : (
                   <ExchangesList exchangesInfo={exchangesInfo} />
                 )
+
                 // <NewsFeed />
                 // <>
                 //   <CoinlistHeader />

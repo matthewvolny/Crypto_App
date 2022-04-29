@@ -45,9 +45,9 @@ export default function NewsFeed() {
   };
 
   //fetch articles when component mounts
-  // useEffect(() => {
-  //   fetchArticles();
-  // }, []);
+  useEffect(() => {
+    fetchArticles();
+  }, []);
 
   //maps articles stored in state, returning article element
   const articlesList = articles?.map((article, index) => {
@@ -57,20 +57,29 @@ export default function NewsFeed() {
           <div className="article-image-container">
             <img src={article.urlToImage} alt="article" />
           </div>
-          <div className="article-title">{article.title}</div>
-          {/* <div>{article.description}</div> */}
-          <div>{article.source.name}</div>
-          <div>{moment(article.publishedAt).format("MM/DD/YYYY")}</div>
-          {/* const threeDaysAgo = moment().subtract(3, "d").format("YYYY-MM-DD"); */}
-          <a href={article.url}>Link</a>
+          <div className="article-contents-container">
+            <div className="article-title">{article.title}</div>
+            {/* <div>{article.description}</div> */}
+            <div className="article-name-and-date">
+              <div>{article.source.name}</div>
+              <a href={article.url}>Link</a>
+            </div>
+            {/* const threeDaysAgo = moment().subtract(3, "d").format("YYYY-MM-DD"); */}
+            <div className="article-date">
+              {moment(article.publishedAt).format("MM/DD")}
+            </div>
+          </div>
         </div>
       );
     }
   });
 
   return (
-    <div className="article-container">
-      <div className="article-inner-container">{articlesList}</div>
-    </div>
+    <>
+      <div className="newsfeed-list-header">Latest News</div>
+      <div className="article-container">
+        <div className="article-inner-container">{articlesList}</div>
+      </div>
+    </>
   );
 }

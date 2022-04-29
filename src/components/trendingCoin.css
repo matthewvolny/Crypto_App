@@ -1,15 +1,31 @@
 .trending-coins-list-and-navigation {
+  margin-top: 0.5em;
   border: 1px solid teal;
   width: 100%;
   padding-left: 1.5em;
   padding-right: 1.5em;
 }
 
+.trending-coins-scroll-flex {
+  display: flex;
+  align-items: center;
+  border: 1px solid yellowgreen;
+  font-size: 1.2rem;
+}
+
+.trending-coins-scroll-flex > img {
+  margin-top: 0;
+  margin-left: 0.5em;
+  width: 15px;
+  border: 1px solid red;
+}
+
 .trending-coins-list-container {
+  margin-top: 0.5em;
   border: 1px solid blue;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   width: 100%;
 }
 
@@ -18,6 +34,7 @@
   border: 1px solid red;
   background-color: white;
   padding: 1em;
+  width: 200px;
 }
 .trending-coin-container + .trending-coin-container {
   margin-left: 0.5em;
@@ -60,7 +77,8 @@
   color: grey;
   border: 1px solid red;
   height: 100%;
-  margin-top: 0.1em;
+  margin-top: 0.25em;
+  font-size: 0.9rem;
 }
 
 .trending-coin-price {

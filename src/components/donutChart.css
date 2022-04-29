@@ -1,0 +1,45 @@
+.white-donut-container {
+  margin-top: 2.8em;
+  border-radius: 1.5em;
+  border: pink 1px solid;
+  width: 100%;
+  min-height: 320px;
+  background-color: white;
+  /* padding: 0.5em; */
+}
+
+.donut-chart-inner-container {
+  border: 1px solid red;
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.donut-chart {
+  margin-top: -50px;
+  margin-bottom: -50px;
+}
+
+.legend-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0;
+  border: 1px solid green;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.coin-color-pair {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.colored-dot {
+  margin-top: 0.3em;
+  border-radius: 0.5em;
+  width: 35px;
+  height: 10px;
+}

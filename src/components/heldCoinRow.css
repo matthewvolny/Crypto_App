@@ -1,0 +1,44 @@
+.held-coins-list-container {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid red;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.held-coins-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid green;
+  width: 100%;
+}
+
+.held-coins-row > div {
+  margin-top: 0;
+}
+
+.held-coins-row-image-container > img {
+  width: 50px;
+}
+
+.coin-name-and-quantity {
+  margin-left: 0.5em;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  border: 1px solid yellowgreen;
+}
+
+.held-coin-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.held-coins-list-container svg {
+  margin-top: 0;
+  width: 225px;
+  border: 1px solid purple;
+}

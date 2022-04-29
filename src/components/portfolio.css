@@ -1,0 +1,68 @@
+.portfolio-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid teal;
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid orange;
+  width: 35%;
+  height: 100%;
+}
+
+.toggle-chart-button {
+  padding: 0.6em 0.8em;
+  border: 1px solid rgb(227, 163, 227);
+  border-radius: 1em;
+}
+
+.toggle-chart-button:hover {
+  color: white;
+  background-color: rgb(227, 163, 227);
+}
+
+.portfolio-chart-flex {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid green;
+  flex-grow: 1;
+  height: 100%;
+}
+
+/* .canvas {
+  position: relative;
+} */
+.screen {
+  position: absolute;
+  background-color: white;
+  width: 425px;
+  height: 150px;
+  top: 325px;
+  right: 330px;
+  z-index: 10;
+}
+
+#reveal-chart {
+  animation: scale-down-hor-right 1s linear both;
+}
+
+@keyframes scale-down-hor-right {
+  0% {
+    transform: scaleX(1);
+    transform-origin: 100% 100%;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: 100% 100%;
+  }
+}

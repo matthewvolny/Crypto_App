@@ -1,0 +1,113 @@
+.background-mask {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(117, 125, 145, 0);
+  width: 100vw;
+  visibility: hidden;
+  transition: all 350ms ease-in-out;
+}
+
+.login-container {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: white;
+  width: 400px;
+  height: 600px;
+  padding: 1.5em 2em;
+  border: 1px solid tan;
+  border-radius: 1em;
+}
+
+.heading {
+  font-size: 1.5rem;
+}
+
+.close-button {
+  width: 35px;
+  position: absolute;
+  right: 30px;
+  top: 10px;
+}
+
+.close-button:hover {
+  background-color: rgba(104, 104, 104, 0.05);
+}
+
+.link {
+  color: purple;
+}
+
+.button {
+  padding: 0.6em 0.8em;
+  border: 1px solid rgb(227, 163, 227);
+  border-radius: 1em;
+}
+
+.button:hover {
+  color: white;
+  background-color: rgb(227, 163, 227);
+}
+
+#hidden {
+  visibility: hidden;
+}
+
+#visible {
+  visibility: visible;
+  /* remember what is being transitioned is opacity on background color */
+  background-color: rgba(117, 125, 145, 0.7);
+  transition: all 350ms ease-in-out;
+}
+
+#login-container-visible {
+  animation: scale-in-ver-center 0.35s cubic-bezier(0.05, 0.53, 0.34, 1) both;
+}
+
+@keyframes scale-in-ver-center {
+  0% {
+    transform: scaleY(0);
+    /* could maybe shift this even lower (i.e. 80% or more?) */
+    transform-origin: 0% 60%;
+    opacity: 0;
+  }
+  20% {
+    /* could maybe shift this even lower (i.e. 80% or more?) */
+    transform-origin: 0% 60%;
+    opacity: 0.1;
+  }
+  100% {
+    transform: scaleY(1);
+    /* could maybe shift this even lower (i.e. 80% or more?) */
+    transform-origin: 0% 60%;
+    opacity: 1;
+  }
+}
+
+#login-container-hidden {
+  animation: scale-out-vertical-center 0.35s ease-out both;
+}
+
+@keyframes scale-out-vertical-center {
+  0% {
+    transform: scaleY(1);
+    transform-origin: 0% 60%;
+    opacity: 1;
+  }
+  80% {
+    transform-origin: 0% 60%;
+    opacity: 0.1;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: 0% 60%;
+    opacity: 0;
+  }
+}

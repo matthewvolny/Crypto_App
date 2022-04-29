@@ -1,0 +1,62 @@
+.exchanges-list-header {
+  color: #fed425;
+  font-size: 1.1rem;
+  width: 100%;
+}
+
+.exchanges-list {
+  width: 100%;
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+}
+
+.bar-chart-inner-container {
+  width: 100%;
+  background-color: white;
+  padding: 1.5em;
+  border-radius: 1.5em;
+}
+
+.exchange-icon-and-rank-flex {
+  display: flex;
+  justify-content: space-between;
+  /* border: red 1px solid; */
+}
+
+.exchange-rank {
+  margin-top: 0;
+  display: flex;
+  margin-left: auto;
+  background-color: #5e80ff;
+  color: white;
+  border-radius: 0.7em;
+  padding: 0.3em 0.7em;
+  height: 80%;
+  display: inline-block;
+}
+
+.bar-chart-actual-container {
+  width: 100%;
+  border: 1px solid red;
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.barchart-volume {
+  margin-top: 0.4em;
+  font-size: 1.2rem;
+}
+
+.tick text {
+  font-size: 10px !important;
+}
+
+.horizontal-grid-line {
+  display: none !important;
+}

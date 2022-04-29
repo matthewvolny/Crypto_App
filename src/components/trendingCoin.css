@@ -1,0 +1,81 @@
+.trending-coins-list-and-navigation {
+  border: 1px solid teal;
+  width: 100%;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.trending-coins-list-container {
+  border: 1px solid blue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.trending-coin-container {
+  margin-top: 0;
+  border: 1px solid red;
+  background-color: white;
+  padding: 1em;
+}
+.trending-coin-container + .trending-coin-container {
+  margin-left: 0.5em;
+}
+
+.trending-coin-image-and-rank-container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid pink;
+}
+
+.trending-coin-image-and-rank-container > img {
+  width: 40px;
+}
+
+.trending-coin-rank {
+  position: inline-block;
+  margin-top: 0;
+  color: white;
+  background-color: grey;
+  padding: 0.1em;
+  height: 50%;
+}
+
+.trending-coin-symbol-and-name {
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid orange;
+}
+
+.trending-coin-symbol {
+  font-size: 1.2rem;
+}
+
+.trending-coin-name {
+  /* display: flex;
+  justify-content: flex-end; */
+  margin-top: 0;
+  margin-left: 0.5em;
+  color: grey;
+  border: 1px solid red;
+  height: 100%;
+  margin-top: 0.1em;
+}
+
+.trending-coin-price {
+  margin-top: 0.7rem;
+  font-size: 1.2rem;
+}
+
+.trending-coin-percent-change-24hr {
+  margin-top: 0.5em;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}

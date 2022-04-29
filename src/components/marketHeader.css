@@ -1,0 +1,50 @@
+.market-heading-and-searchbar-flex {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  border: solid 1px rgb(53, 237, 53);
+  min-height: 12%;
+}
+
+.market-header {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid red;
+  width: 100%;
+  height: 100%;
+}
+
+.market-header-name {
+  font-size: 2rem;
+  padding-left: 3.7rem;
+  /* border: 1px solid purple; */
+}
+
+.market-account-value-container {
+  display: flex;
+  align-items: center;
+  padding-left: 3.7rem;
+  margin-top: 0.6rem;
+  /* border: 1px solid purple; */
+}
+
+.market-account-value-container > div {
+  margin-top: 0em;
+}
+
+.market-header-price {
+  font-size: 1.5rem;
+}
+
+.market-header-percent {
+  margin-left: 0.5em;
+}
+
+.market-header-id {
+  margin-top: 0.6rem;
+  font-size: 1.2em;
+  /* border: 1px solid tan; */
+  padding-left: 3.7rem;
+}

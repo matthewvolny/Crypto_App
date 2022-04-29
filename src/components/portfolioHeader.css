@@ -1,0 +1,42 @@
+.portfolio-header {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio-header-name {
+  font-size: 2rem;
+  padding-left: 3.7rem;
+  /* border: 1px solid purple; */
+}
+
+.portfolio-account-value-container {
+  display: flex;
+  align-items: center;
+  padding-left: 3.7rem;
+  margin-top: 0.6rem;
+  /* border: 1px solid purple; */
+}
+
+.portfolio-account-value-container > div {
+  margin-top: 0em;
+}
+
+.portfolio-header-price {
+  font-size: 1.8rem;
+}
+
+.portfolio-header-percent {
+  margin-left: 0.5em;
+}
+
+.portfolio-header-id {
+  margin-top: 0.6rem;
+  font-size: 1.2em;
+  /* border: 1px solid tan; */
+  padding-left: 3.7rem;
+}

@@ -81,7 +81,7 @@ export default function ChartControls(props) {
         value="all"
         onClick={(e) => handleClick("max", "max", e)}
       >
-        All
+        A
       </div>
     </div>
   );

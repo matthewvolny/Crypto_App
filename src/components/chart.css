@@ -3,28 +3,37 @@
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  border-radius: 2em;
+  border-radius: 2.5em;
+  /* height: 80%; */
   /* border: 1px solid red; */
-  padding: 2.5em 1.6em 1.5em 1.6em;
+  padding: 1.5em 2em 1.5em 2em;
   margin: 2em 1.5em;
 }
 
-.chart-with-controls-container {
+/* .chart-with-controls-container {
   margin-top: 0;
+  height: 100%;
+  width: 100%;
+} */
+
+.chart-with-controls-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100%;
   width: 100%;
   /* border: 1px solid black; */
 }
 
 .chart {
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0;
+  justify-content: flex-end;
+  align-items: flex-end;
   /* flex-grow: 1; */
   /* height: 100%; */
+  margin-top: 0.75em;
 }
 
 /* #chartElement {

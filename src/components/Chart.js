@@ -151,7 +151,7 @@ export default function Chart() {
     console.log(coinChartData);
     const chart = createChart(document.querySelector(".chart"), {
       width: updatedWidth,
-      height: 220,
+      height: 210,
       priceScale: {
         //adjusts space between line and top and bottom of chart
         scaleMargins: {
@@ -196,7 +196,7 @@ export default function Chart() {
         backgroundColor: "white",
         fontFamily: "Arial",
         fontSize: 15,
-        textColor: "gray",
+        textColor: "black",
       },
 
       timeScale: {
@@ -447,12 +447,11 @@ export default function Chart() {
     <div className="chart-container">
       <div className="chart-flex">
         <div className="chart-with-controls-container">
-          <div className="chart">
-            <ChartControls
-              setViewFieldDuration={setViewFieldDuration}
-              setTimeFrameToFetch={setTimeFrameToFetch}
-            />
-          </div>
+          <ChartControls
+            setViewFieldDuration={setViewFieldDuration}
+            setTimeFrameToFetch={setTimeFrameToFetch}
+          />
+          <div className="chart"></div>
         </div>
       </div>
     </div>

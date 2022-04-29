@@ -22,39 +22,41 @@
 /*  */
 .coin-header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
   align-items: flex-start;
   /* border: 1px solid red; */
-  width: 100%;
+  /* margin-left: 3.1em; */
+  margin-left: 1.5em;
   height: 100%;
 }
 
-.coin-header-rank {
+/* .coin-header-rank {
   display: flex;
   margin-left: 3.82em;
   background-color: #5e80ff;
   color: white;
   border-radius: 0.7em;
   padding: 0.3em 0.7em;
-}
+  font-size: 0.9rem;
+} */
 
-.coin-header-rank > div {
+/* .coin-header-rank > div {
   margin-top: 0;
-}
+} */
 
-.coin-header-name-symbol-icon-container {
+.coin-header-name-symbol-container {
   display: flex;
   align-items: center;
   margin-top: 0.6em;
   /* border: 1px solid red; */
 }
-.coin-header-name-symbol-icon-container > div {
+.coin-header-name-symbol-container > div {
   margin-top: 0;
 }
 .coin-header-image-container {
   /* border: 1px solid fuchsia; */
-  padding-left: 3.4em;
+  /* padding-left: 3.4em; */
 }
 
 .header-icon {
@@ -64,15 +66,27 @@
 }
 
 .coin-header-name {
-  font-size: 1.6rem;
-  margin-left: 0.5em;
-  padding-right: 0;
+  color: #5e80ff;
+  font-weight: bold;
+  font-size: 2.1rem;
+  /* padding-left: 3.7rem; */
+
+  letter-spacing: 0.08rem;
 }
 
 .coin-header-symbol {
-  color: grey;
-  font-size: 1rem;
+  color: #5e80ff;
+  padding-top: 0.6em;
+  /* color: grey; */
+  font-size: 1.1rem;
   margin-left: 0.5em;
+  letter-spacing: 0.08rem;
+  /* border: 1px solid rgb(158, 154, 101); */
+}
+
+.parentheses-chart-header {
+  position: relative;
+  bottom: 2px;
 }
 
 .username-heading {
@@ -83,7 +97,7 @@
 .coin-header-price-container {
   display: flex;
   align-items: center;
-  padding-left: 3.7em;
+  /* padding-left: 3.7em; */
   margin-top: 0.6em;
   /* border: 1px solid purple; */
 }
@@ -93,9 +107,15 @@
 }
 
 .coin-header-price {
-  font-size: 1.8rem;
+  color: #5e80ff;
+  font-weight: bold;
+  font-size: 1.7rem;
+  letter-spacing: 0.04rem;
 }
 
 .coin-header-percent {
   margin-left: 0.5em;
+  padding-top: 0.3em;
+  font-size: 1.1rem;
+  letter-spacing: 0.04rem;
 }

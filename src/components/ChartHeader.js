@@ -36,26 +36,31 @@ export default function ChartHeader() {
   return (
     <div className="heading-and-searchbar-flex">
       <div className="coin-header">
-        <div className="coin-header-rank">
+        {/* <div className="coin-header-rank">
           <div>Rank&nbsp;</div>
           <div>#{rank}</div>
+        </div> */}
+        <div className="coin-header-image-container">
+          <img className="header-icon" src={image} alt="icon" />
         </div>
-        <div className="coin-header-name-symbol-icon-container">
-          <div className="coin-header-image-container">
-            <img className="header-icon" src={image} alt="icon" />
-          </div>
+        <div className="coin-header-name-symbol-container">
           {/* <div className="coin-details-name-container"> */}
           <div className="coin-header-name">{name}</div>
-          <div className="coin-header-symbol">({symbol.toUpperCase()})</div>
+          <div className="coin-header-symbol">
+            <span className="parentheses-chart-header">(</span>
+            {symbol.toUpperCase()}
+            <span className="parentheses-chart-header">)</span>
+          </div>
         </div>
         <div className="coin-header-price-container">
-          <div className="coin-header-price">${price}</div>
+          <div className="coin-header-price">
+            ${Number(price).toLocaleString("en-US")}
+          </div>
           <div className="coin-header-percent" id={greenOrRed}>
             {percentChange24hr}%
           </div>
         </div>
       </div>
-      <SearchBar />
     </div>
   );
 }

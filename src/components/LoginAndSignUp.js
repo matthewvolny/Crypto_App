@@ -8,26 +8,26 @@ export default function LoginAndSignUp() {
 
   return (
     <>
-      <div className="login-buttons-container">
-        <div
-          className="login-button"
-          onClick={() => {
-            setTypeOfForm("login");
-            setFormVisible(true);
-          }}
-        >
-          Log in
-        </div>
-        <div
-          className="signup-button"
-          onClick={() => {
-            setTypeOfForm("signup");
-            setFormVisible(true);
-          }}
-        >
-          Sign up
-        </div>
+      {/* <div className="login-buttons-container"> */}
+      <div
+        className="login-button"
+        onClick={() => {
+          setTypeOfForm("login");
+          setFormVisible(true);
+        }}
+      >
+        Log in
       </div>
+      <div
+        className="signup-button"
+        onClick={() => {
+          setTypeOfForm("signup");
+          setFormVisible(true);
+        }}
+      >
+        Sign up
+      </div>
+      {/* </div> */}
       <LoginForm
         typeOfForm={typeOfForm}
         setTypeOfForm={setTypeOfForm}

@@ -12,7 +12,7 @@ export default function MarketHeader() {
         </div> */}
         {/* <div className="market-header-id">*** *** 1473</div> */}
       </div>
-      <SearchBar />
+      {/* <SearchBar /> */}
     </div>
   );
 }

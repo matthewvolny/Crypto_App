@@ -20,6 +20,7 @@ import BarChart from "./components/BarChart";
 import NewsFeed from "./components/NewsFeed";
 import colorBlock from "./images/color-block-expanded.png";
 import { heldCoins, accountBalanceChartData, userInfo } from "./mockData/data";
+import BitcoinAndEthereumInfo from "./components/BitcoinAndEthereumInfo";
 import axios from "axios";
 import "./App.css";
 import moment from "moment";
@@ -448,14 +449,16 @@ function App() {
               }
             </div>
             <div className="right-flex">
-              <LoginAndSignUp />
-
+              <div className="login-and-searchbar-flex">
+                <LoginAndSignUp />
+                <SearchBar />
+              </div>
               {currentRoute === "portfolio" ? (
                 <DonutChart />
               ) : currentRoute === "chart" ? (
                 <CoinDescription />
               ) : (
-                <></>
+                <BitcoinAndEthereumInfo coinData={coinData} />
               )}
               {/* <NewsFeed /> */}
             </div>

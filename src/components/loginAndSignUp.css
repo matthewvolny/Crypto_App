@@ -1,29 +1,30 @@
-.login-buttons-container {
+/* .login-buttons-container {
   margin-top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  /* border: 1px solid red; */
   width: 100%;
   padding: 0.5em;
-}
+} */
 
 .login-button,
 .signup-button {
+  margin-top: 0;
   text-align: center;
-  padding: 0.6em 1.2em;
-  width: 125px;
+  padding: 0.6em 0.8em;
+  width: 110px;
   background-color: #fed425;
   /* border: 1px solid rgb(227, 163, 227); */
   border-radius: 1.5em;
-  margin: 0.5em;
+  /* margin: 0.5em; */
 }
 
 .login-button {
 }
 
 .signup-button {
+  margin-left: 1em;
   /* margin-top: 0; */
 }
 

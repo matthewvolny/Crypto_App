@@ -126,5 +126,12 @@ body {
   align-items: center;
   width: 35%;
   border: white 1px solid;
-  padding: 1.5em 2em 2.5em 1.5em;
+  /* margin: 2.5em 1.5em 2.5em 1.5em; */
+  padding: 2.5em 1.75em 2.5em 1.5em;
+}
+
+.login-and-searchbar-flex {
+  display: flex;
+  /* border: 1px solid rgb(226, 166, 123); */
+  align-self: flex-end;
 }

@@ -36,37 +36,29 @@ export default function PortfolioChartControls(props) {
 
   return (
     <div className="portfolio-chart-controls">
-      {/* <div
-        className="percent"
-        value="percent"
-        // id="clicked"
-        onClick={(e) => handleClick("1", e)}
-      >
-        percent
-      </div> */}
       <div
         className="day"
         value="day"
-        // id="clicked"
+        id="clicked"
         onClick={(e) => handleClick("1", e)}
       >
-        Day
+        D
       </div>
       <div className="week" value="week" onClick={(e) => handleClick("7", e)}>
-        Week
+        W
       </div>
       <div
         className="month"
         value="month"
         onClick={(e) => handleClick("30", e)}
       >
-        Month
+        M
       </div>
       <div className="year" value="year" onClick={(e) => handleClick("365", e)}>
-        Year
+        Y
       </div>
       <div className="all" value="all" onClick={(e) => handleClick("max", e)}>
-        All
+        A
       </div>
     </div>
   );

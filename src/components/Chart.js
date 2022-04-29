@@ -161,7 +161,7 @@ export default function Chart() {
         //!shows percent change
         // mode: 2,
         // borderVisible: true,
-        borderColor: "grey", //changed to grey
+        borderColor: "black", //changed to grey
         entireTextOnly: true,
         // drawTicks: true,
       },
@@ -204,7 +204,7 @@ export default function Chart() {
         timeVisible: chartMinSecVisibility,
         secondsVisible: chartMinSecVisibility,
         // borderVisible: true,
-        borderColor: "grey", //changed to grey
+        borderColor: "black", //changed to grey
         //!offset of graph from right y-axis (vary this depending on scale of graph)
         //!may need to increase a wider graph
         //rightOffset: 1,  //!does not seem to work

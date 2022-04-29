@@ -9,7 +9,7 @@ import "./portfolio.css";
 
 export default function Portfolio(props) {
   const isMounted = useRef(false);
-  const [updatedWidth, setUpdatedWidth] = useState(500);
+  const [updatedWidth, setUpdatedWidth] = useState(350);
   const [viewFieldDuration, setViewFieldDuration] = useState("1");
   const [chartMinSecVisibility, setChartMinSecVisibility] = useState();
   const [chartToggle, setChartToggle] = useState(false);
@@ -21,7 +21,7 @@ export default function Portfolio(props) {
     console.log(accountBalanceData);
     const chart = createChart(document.querySelector(".chart"), {
       width: updatedWidth,
-      height: 220,
+      height: 210,
       priceScale: {
         //adjusts space between line and top and bottom of chart
         scaleMargins: {
@@ -31,7 +31,7 @@ export default function Portfolio(props) {
         //!shows percent change
         //mode: 2,
         // borderVisible: true,
-        borderColor: "grey", //changed to grey
+        borderColor: "black", //changed to grey
         entireTextOnly: true,
         // drawTicks: true,
       },
@@ -66,7 +66,7 @@ export default function Portfolio(props) {
         backgroundColor: "white",
         fontFamily: "Arial",
         fontSize: 15,
-        textColor: "gray",
+        textColor: "black",
       },
 
       timeScale: {
@@ -74,7 +74,7 @@ export default function Portfolio(props) {
         timeVisible: chartMinSecVisibility,
         secondsVisible: chartMinSecVisibility,
         // borderVisible: true,
-        borderColor: "grey", //changed to grey
+        borderColor: "black", //changed to grey
         //!offset of graph from right y-axis (vary this depending on scale of graph)
         //!may need to increase a wider graph
         //rightOffset: 1,  //!does not seem to work
@@ -221,14 +221,11 @@ export default function Portfolio(props) {
 
   return (
     <div className="chart-container">
-      <div className="chart-flex">
-        <div className="chart-with-controls-container">
-          <div className="chart">
-            <div className="screen"></div>
-            <PortfolioChartControls
-              setViewFieldDuration={setViewFieldDuration}
-            />
-          </div>
+      <div className="portfolio-chart-flex">
+        <div className="portfolio-chart-with-controls-container">
+          <PortfolioChartControls setViewFieldDuration={setViewFieldDuration} />
+          <div className="chart"></div>
+          <div className="screen"></div>
         </div>
       </div>
     </div>

@@ -85,7 +85,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* border: 1px solid red; */
+  border: 1px solid red;
   width: 100%;
   flex-grow: 1;
   padding-left: 1.5em;
@@ -93,7 +93,7 @@
 }
 
 .held-coins-list-inner-container {
-  /* border: gold 1px solid; */
+  border: gold 1px solid;
   height: 100%;
   margin-top: 0;
   display: flex;

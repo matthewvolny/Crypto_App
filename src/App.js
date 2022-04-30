@@ -435,7 +435,6 @@ function App() {
                   <HeldCoinsList />
                 ) : currentRoute === "currencies" ? (
                   <>
-                    <CoinlistHeader />
                     <div className="coinlist-container">
                       <Coinlist coinData={coinData} setCoinData={setCoinData} />
                     </div>

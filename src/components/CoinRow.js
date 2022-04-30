@@ -68,8 +68,8 @@ export default function CoinRow(props) {
       <div className="star-container">
         <img src={star} alt="star" />
       </div>
-      <div>{rank}</div>
-      <div>
+      <div className="coin-row-rank">{rank}</div>
+      <div className="coin-row-icon-container">
         <img src={image} alt="crypto-icon" className="icon"></img>
       </div>
       <NavLink
@@ -88,8 +88,12 @@ export default function CoinRow(props) {
       >
         {name}
       </NavLink>
-      <div>{symbol}</div>
-      <div>${price}</div>
+      <div className="coin-row-symbol">
+        <span className="coin-row-parentheses">(</span>
+        {symbol.toUpperCase()}
+        <span className="coin-row-parentheses">)</span>
+      </div>
+      <div>${Number(price).toFixed(2).toLocaleString("en-US")}</div>
       <div className="percent-change">{percentChange24hr}</div>
       <div className="percent-change">{percentChange7d}</div>
       {/* <div>${marketCap}</div>

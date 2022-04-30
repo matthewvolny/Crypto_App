@@ -90,21 +90,29 @@ body {
   min-height: 42%;
 }
 
-.coinlist-container {
+/* .coinlist-container {
   margin-top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
   width: 100%;
-  /* min-width: 0; */
-  /* width: auto; */
   flex-grow: 1;
   border: 1px solid red;
-  /* background-color: #e2f0fb; */
   border-radius: 0em 0em 0em 1.5em;
   overflow: scroll;
-  /* padding: 1.5em; */
+} */
+
+.coinlist-container {
+  margin-top: 1.5em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid red;
+  width: 100%;
+  flex-grow: 1;
+  padding-left: 1.5em;
+  position: relative;
 }
 
 /* .green {

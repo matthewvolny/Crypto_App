@@ -6,12 +6,12 @@ export default function BitcoinAndEthereumInfo({ coinData }) {
 
   useEffect(() => {
     const bitCoinInfo = coinData?.find((coin) => {
-      return (coin.id = "bitcoin");
+      return coin.id === "bitcoin";
     });
     console.log("bitCoinInfo");
     console.log(bitCoinInfo);
     const ethereumCoinInfo = coinData?.find((coin) => {
-      return (coin.id = "ethereum");
+      return coin.id === "ethereum";
     });
     console.log("ethereumCoinInfo");
     console.log(ethereumCoinInfo);

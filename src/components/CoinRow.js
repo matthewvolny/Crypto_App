@@ -67,6 +67,16 @@ export default function CoinRow(props) {
   //   const numberPrice = Number((price).toFixed(2));
   //   return numberPrice.toLocaleString("en-US");
   // };
+  // const numberToPrice = (number) => {
+  //   var num = Number(newVal) * 0.01;
+  //   var formatter = new Intl.NumberFormat("en-US", {
+  //     style: "currency",
+  //     currency: "USD",
+  //     minimumFractionDigits: 2,
+  //     maximumFractionDigits: 2,
+  //   });
+  //   var currency = formatter.format(num);
+  // };
 
   return (
     <div className="coin-row">
@@ -98,7 +108,13 @@ export default function CoinRow(props) {
         {symbol.toUpperCase()}
         <span className="coin-row-parentheses">)</span>
       </div>
-      <div>${price.toLocaleString("en-US")}</div>
+      <div>
+        $
+        {Number(price).toLocaleString("en-US", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })}
+      </div>
       <div className="percent-change">{percentChange24hr}</div>
       <div className="percent-change">{percentChange7d}</div>
       {/* <div>${marketCap}</div>

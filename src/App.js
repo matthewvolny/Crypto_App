@@ -168,84 +168,81 @@ function App() {
   };
 
   //(2)initial api call retrieves list data for a subset of coins
-  const fetchInitialCoinSet = () => {
-    axios
-      .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true&price_change_percentage=24h%2C7d"
-      )
-      .then((response) => {
-        const data = response.data;
-        console.log("data right out of fetch request");
-        console.log(data);
-        const coinDataArray = [];
-        data.forEach((coin) => {
-          coinDataArray.push({
-            id: coin.id,
-            rank: coin.market_cap_rank,
-            image: coin.image,
-            name: coin.name,
-            symbol: coin.symbol,
-            price: roundCoinPrice(
-              coin.current_price
-            ) /*?.toLocaleString("en-US"), //!not added commas*/,
-            percentChange24hr:
-              coin.price_change_percentage_24h_in_currency.toFixed(2),
-            percentChange7d:
-              coin.price_change_percentage_7d_in_currency.toFixed(2),
-            marketCap: coin.market_cap.toLocaleString("en-US"),
-            volume24hr: coin.total_volume.toLocaleString("en-US"),
-            sparkline: roundSparklineData(coin.sparkline_in_7d),
-          });
-        });
-        console.log("initial CoinData fetch");
-        console.log(coinDataArray);
-        setCoinData(coinDataArray);
-      });
-  };
+  // const fetchInitialCoinSet = () => {
+  //   axios
+  //     .get(
+  //       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true&price_change_percentage=24h%2C7d"
+  //     )
+  //     .then((response) => {
+  //       const data = response.data;
+  //       console.log("data right out of fetch request");
+  //       console.log(data);
+  //       const coinDataArray = [];
+  //       data.forEach((coin) => {
+  //         debugger;
+  //         coinDataArray.push({
+  //           id: coin.id,
+  //           rank: coin.market_cap_rank,
+  //           image: coin.image,
+  //           name: coin.name,
+  //           symbol: coin.symbol,
+  //           price: roundCoinPrice(
+  //             coin.current_price
+  //           ), /*?.toLocaleString("en-US"), //!not added commas*/,
+  //           percentChange24hr:
+  //             coin.price_change_percentage_24h_in_currency.toFixed(2),
+  //           percentChange7d:
+  //             coin.price_change_percentage_7d_in_currency.toFixed(2),
+  //           marketCap: coin.market_cap.toLocaleString("en-US"),
+  //           volume24hr: coin.total_volume.toLocaleString("en-US"),
+  //           sparkline: roundSparklineData(coin.sparkline_in_7d),
+  //         });
+  //       });
+  //       console.log("initial CoinData fetch after push");
+  //       console.log(coinDataArray);
+  //       setCoinData(coinDataArray);
+  //     });
+  // };
 
   const fetchAllRankedCoins = async (initialPage, stopIndex) => {
+    console.log("coinData state before copying in fetch");
+    console.log(coinData);
     const coinDataArray = [...coinData];
     for (let i = initialPage; i <= stopIndex; i++) {
-      await axios
-        .get(
-          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=${i}&sparkline=true&price_change_percentage=24h%2C7d`
-        )
-        .then((response) => {
-          const data = response.data;
-          // console.log(data);
-          data.forEach((coin) => {
-            //!may want to add sorting on coin rank
-            // if (coin.rank) {
-            coinDataArray.push({
-              id: coin.id,
-              rank: coin.market_cap_rank,
-              image: coin.image,
-              name: coin.name,
-              symbol: coin.symbol,
-              price: roundCoinPrice(coin.current_price)?.toLocaleString(
-                "en-US"
-              ),
-              percentChange24hr:
-                coin.price_change_percentage_24h_in_currency?.toFixed(2),
-              percentChange7d:
-                coin.price_change_percentage_7d_in_currency?.toFixed(2),
-              marketCap: coin.market_cap?.toLocaleString("en-US"),
-              volume24hr: coin.total_volume?.toLocaleString("en-US"),
-              sparkline: roundSparklineData(coin.sparkline_in_7d),
-            });
-            // }
-          });
-          if (i === stopIndex) {
-            // console.log(coinDataArray);
-            const sortedCoinDataArray = coinDataArray.sort((a, b) => {
-              return a.rank - b.rank;
-            });
-            // console.log("second coinData fetch (sorted coin data)");
-            // console.log(sortedCoinDataArray); //coin data sorted
-            setCoinData(sortedCoinDataArray); //!not sorted in state (probably missing an update)
-          }
+      const { data } = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=${i}&sparkline=true&price_change_percentage=24h%2C7d`
+      );
+
+      console.log("fetch of all coin data");
+      console.log(data);
+      data.forEach((coin) => {
+        //!may want to add sorting on coin rank
+        // if (coin.rank) {
+        coinDataArray.push({
+          id: coin.id,
+          rank: coin.market_cap_rank,
+          image: coin.image,
+          name: coin.name,
+          symbol: coin.symbol,
+          price: roundCoinPrice(coin.current_price)?.toLocaleString("en-US"),
+          percentChange24hr:
+            coin.price_change_percentage_24h_in_currency?.toFixed(2),
+          percentChange7d:
+            coin.price_change_percentage_7d_in_currency?.toFixed(2),
+          marketCap: coin.market_cap?.toLocaleString("en-US"),
+          volume24hr: coin.total_volume?.toLocaleString("en-US"),
+          sparkline: roundSparklineData(coin.sparkline_in_7d),
         });
+        // }
+      });
     }
+    // console.log(coinDataArray);
+    const sortedCoinDataArray = coinDataArray.sort((a, b) => {
+      return a.rank - b.rank;
+    });
+    console.log("second coinData fetch (sorted coin data)");
+    console.log(sortedCoinDataArray); //coin data sorted
+    setCoinData(sortedCoinDataArray); //!not sorted in state (probably missing an update)
   };
 
   //fetch exchange volume for 1 and 7 days
@@ -380,11 +377,12 @@ function App() {
   //(1) fetch initial set of coins, then a larger set of all ranked coins
   useEffect(() => {
     console.log("should only run once");
-    fetchInitialCoinSet();
+    //console.log(coinData)
+    //fetchInitialCoinSet();
     fetchTopExchanges();
     fetchTrendingCoins();
-    //fetchAllRankedCoins(1, 15);
-    fetchAllRankedCoins(1, 10);
+    fetchAllRankedCoins(1, 1);
+    //fetchAllRankedCoins(1, 5);
   }, []);
 
   return (

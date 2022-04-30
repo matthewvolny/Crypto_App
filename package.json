@@ -19,10 +19,16 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start-client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "npm run build && (cd server && npm start)",
+    "db:create": "createdb Crypto_App",
+    "db:destroy": "dropdb Crypto_App",
+    "db:init": "psql -f schema.sql Crypto_App",
+    "db:seed": "psql -f seed.sql Crypto_App",
+    "db:reset": "npm run db:destroy; npm run db:create && npm run db:init"
   },
   "eslintConfig": {
     "extends": [

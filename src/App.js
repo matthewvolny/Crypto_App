@@ -35,6 +35,7 @@ function App() {
   const [trendingCoins, setTrendingCoins] = useState();
   const [exchangesInfo, setExchangesInfo] = useState();
   const [trendingCoinsLocal, setTrendingCoinsLocal] = useState([]);
+  const [highlightChart, setHighlightChart] = useState(false);
 
   //(ddd)retrieves price data (mockAccountChartData) for all time (daily) and
   const fetchMockAccountBalanceChartData = async (duration) => {
@@ -46,7 +47,7 @@ function App() {
     const priceDataArray = [];
     if (duration === "max") {
       //if viewfield set to "max"
-      console.log(`data in "week" format`);
+      // console.log(`data in "week" format`);
       for (let i = priceData.length - 1; i >= 0; i--) {
         if (i % 7 === 0) {
           priceDataArray.unshift({
@@ -57,7 +58,7 @@ function App() {
       }
     } else if (duration === "1095") {
       //if viewfield set to "365"
-      console.log(`data in "day" format`);
+      // console.log(`data in "day" format`);
       priceData.forEach((priceArray) => {
         priceDataArray.push({
           time: moment(priceArray[0]).format("MM/DD/YYYY"),
@@ -174,7 +175,8 @@ function App() {
       )
       .then((response) => {
         const data = response.data;
-        // console.log(data);
+        console.log("data right out of fetch request");
+        console.log(data);
         const coinDataArray = [];
         data.forEach((coin) => {
           coinDataArray.push({
@@ -238,8 +240,8 @@ function App() {
             const sortedCoinDataArray = coinDataArray.sort((a, b) => {
               return a.rank - b.rank;
             });
-            console.log("second coinData fetch (sorted coin data)");
-            console.log(sortedCoinDataArray); //coin data sorted
+            // console.log("second coinData fetch (sorted coin data)");
+            // console.log(sortedCoinDataArray); //coin data sorted
             setCoinData(sortedCoinDataArray); //!not sorted in state (probably missing an update)
           }
         });
@@ -273,8 +275,8 @@ function App() {
             smallestNumber = currentNumber;
           }
           console.log("exhcange and shortest#");
-          console.log(exchange);
-          console.log(smallestNumber);
+          // console.log(exchange);
+          // console.log(smallestNumber);
           const divisor = "1".padEnd(shortestLength, "0");
           const subtractor = Number(String(smallestNumber).charAt(0));
 
@@ -370,8 +372,8 @@ function App() {
         }
       }
     }
-    console.log("trending coins copy");
-    console.log(trendingCoinsLocalCopy);
+    // console.log("trending coins copy");
+    // console.log(trendingCoinsLocalCopy);
     setTrendingCoins(trendingCoinsLocalCopy);
   }, [trendingCoinsLocal, coinData]);
 
@@ -397,6 +399,8 @@ function App() {
         setCurrentRoute,
         trendingCoins,
         setTrendingCoins,
+        highlightChart,
+        setHighlightChart,
       }}
     >
       <div className="container">
@@ -460,6 +464,8 @@ function App() {
                 <DonutChart />
               ) : currentRoute === "chart" ? (
                 <CoinDescription />
+              ) : currentRoute === "currencies" ? (
+                <></>
               ) : (
                 <BitcoinAndEthereumInfo coinData={coinData} />
               )}

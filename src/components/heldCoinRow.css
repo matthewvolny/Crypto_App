@@ -175,6 +175,15 @@
   text-align: center;
 }
 
+.todays-return,
+.total-return {
+  font-size: 1.1rem;
+}
+
+.return-and-percentage div + div {
+  margin-top: 0.2em;
+}
+
 /* 
 .held-coins-legend {
   position: absolute;

@@ -16,6 +16,8 @@ export default function Sidebar({ firstCoinData }) {
     // setTrendingCoins,
     accountData,
     setAccountData,
+    highlightChart,
+    setHighlightChart,
   } = useContext(Context);
   const [selectedCoinDataWithDescription, setSelectedCoinDataWithDescription] =
     useState();
@@ -50,13 +52,24 @@ export default function Sidebar({ firstCoinData }) {
     }
   };
 
-  //console.log(firstCoinData?.name);
+  //change highlighting when navigating to the chart element via the coinRows component
+  useEffect(() => {
+    if (highlightChart) {
+      buttonDOMObject[actionClicked].removeAttribute("id");
+      buttonDOMObject[actionClicked].firstChild.removeAttribute("id");
+      // chartButton.parentElement.setAttribute("id", "sidebar-clicked");
+      chartButton.setAttribute("id", "sidebar-clicked");
+      chartButton.firstChild.setAttribute("id", "sidebar-navlink-clicked");
+      setActionClicked(chartButton.className);
+      setHighlightChart(false);
+    }
+  }, [highlightChart]);
 
   //adds "description" to coin selectedCoinInfo
   const fetchCoinDescription = (coin) => {
-    console.log("in fetchCoinDescription");
-    console.log(coin);
-    console.log(coin.id);
+    // console.log("in fetchCoinDescription");
+    // console.log(coin);
+    // console.log(coin.id);
     let selectedCoinInfo = coin;
     axios
       .get(`https://api.coingecko.com/api/v3/coins/${coin.id}`)
@@ -70,45 +83,6 @@ export default function Sidebar({ firstCoinData }) {
         setSelectedCoinDataWithDescription(selectedCoinInfo);
       });
   };
-
-  // //fetch trending coin data
-  // const fetchTrendingCoins = () => {
-  //   axios
-  //     .get("https://api.coingecko.com/api/v3/search/trending")
-  //     .then((response) => {
-  //       const data = response.data;
-  //       // console.log("trending coins data");
-  //       // console.log(data);
-  //       // console.log(data.coins);
-  //       const coins = data.coins;
-  //       const trendingCoinArray = [];
-  //       coins.forEach((coin) => {
-  //         trendingCoinArray.push(coin.item);
-  //       });
-  //       // console.log(trendingCoinArray);
-  //       setTrendingCoinsLocal(trendingCoinArray);
-  //     });
-  // };
-
-  // //add additional data to fetched trending coins, store trending coins in state
-  // useEffect(() => {
-  //   let trendingCoinsLocalCopy = [...trendingCoinsLocal];
-  //   for (let i = 0; i < trendingCoinsLocalCopy.length; i++) {
-  //     for (let j = 0; j < coinData?.length; j++) {
-  //       if (trendingCoinsLocalCopy[i].id == coinData[j].id) {
-  //         trendingCoinsLocalCopy[i].percentChange24hr =
-  //           coinData[j].percentChange24hr;
-  //         trendingCoinsLocalCopy[i].currentPrice = coinData[j].price;
-  //         trendingCoinsLocalCopy[i].percentChange7d =
-  //           coinData[j].percentChange7d;
-  //         trendingCoinsLocalCopy[i].sparkline = coinData[j].sparkline;
-  //       }
-  //     }
-  //   }
-  //   // console.log("trending coins copy");
-  //   console.log(trendingCoinsLocalCopy);
-  //   setTrendingCoins(trendingCoinsLocalCopy);
-  // }, [trendingCoinsLocal]);
 
   //simulating the purchase of 3 different coins three months ago using 50% of account funds
   const buyMockCoinsThreeMonthsAgo = () => {

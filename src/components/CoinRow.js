@@ -9,8 +9,13 @@ import "./coinrow.css";
 
 export default function CoinRow(props) {
   const [sparklineColor, setSparklineColor] = useState();
-  const { selectedCoinData, setSelectedCoinData, setCoinChartData } =
-    useContext(Context);
+  const {
+    selectedCoinData,
+    setSelectedCoinData,
+    setCoinChartData,
+    setCurrentRoute,
+    setHighlightChart,
+  } = useContext(Context);
   const [selectedCoinDataWithDescription, setSelectedCoinDataWithDescription] =
     useState();
   //const isMounted = useRef(false);
@@ -76,6 +81,9 @@ export default function CoinRow(props) {
         }}
         onClick={() => {
           setSelectedCoinData(selectedCoinDataWithDescription);
+          setCurrentRoute("chart");
+          //remove highlighting from sidebar "coins", and highlight "chart"
+          setHighlightChart(true);
         }}
       >
         {name}

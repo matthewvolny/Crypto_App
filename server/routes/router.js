@@ -13,7 +13,7 @@ const express = require("express"),
 const config = {
   host: "localhost",
   port: 5432,
-  database: "Point-And-Click-Game",
+  database: "Crypto_App",
   user: "matthewvolny",
   password: "Ronweasley1@@@",
 };
@@ -21,16 +21,16 @@ const config = {
 const database = pgPromise(config);
 
 //retrieve user games
-router.get("/retrieveUserGames", async (req, res) => {
-  try {
-    const userGames = await database.any(
-      "SELECT * FROM user_info ORDER BY created_at"
-    );
-    res.send(userGames);
-  } catch (error) {
-    console.log(error);
-  }
-});
+// router.get("/retrieveUserGames", async (req, res) => {
+//   try {
+//     const userGames = await database.any(
+//       "SELECT * FROM user_info ORDER BY created_at"
+//     );
+//     res.send(userGames);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 //retrieve user game on login
 router.get("/login", async (req, res) => {
@@ -57,86 +57,83 @@ router.get("/login", async (req, res) => {
 
 //signup user for a new game
 router.post("/signup", async (req, res) => {
-  const { name, password } = req.body.loginInfo;
+  const { name, email, password } = req.body.loginInfo;
   // const currentRoom = req.body.currentRoom;
   const userId = req.body.userId;
   console.log(name);
+  console.log(email);
   console.log(password);
-  console.log("in retrieve /signup");
-  res.send("hello");
+  console.log(userId);
+  console.log("in retrieve/signup");
+  res.send("from retrieve/signup");
   try {
     let queryString =
-      "INSERT INTO user_info (user_id, user_name, user_password) VALUES ($1, $2, $3)";
-    await database.none(queryString, [userId, name, password]);
-    // let queryString =
-    //   "INSERT INTO user_info (user_id, user_name, user_password, current_room) VALUES ($1, $2, $3, $4)";
-    // await database.none(queryString, [userId, name, password, currentRoom]);
-
-    let queryStringTwo = "INSERT INTO user_inventory (user_id) VALUES ($1)";
-    await database.none(queryStringTwo, [userId]);
+      "INSERT INTO user_info (user_id, user_name, user_email, user_password) VALUES ($1, $2, $3, $4)";
+    await database.none(queryString, [userId, name, email, password]);
   } catch (error) {
     console.log(error);
   }
 });
 
 //retrieve user's game state from db
-router.get("/retrieveGameState", async (req, res) => {
-  console.log("in get");
-  try {
-    const posts = await database.any(
-      "SELECT * FROM posts LEFT JOIN comments using (post_id) ORDER BY posts.created_at, post_id, comments.created_at"
-    );
-    console.log(posts);
-    res.send(posts);
-  } catch (error) {
-    console.log(error);
-  }
-});
+// router.get("/retrieveGameState", async (req, res) => {
+//   console.log("in get");
+//   try {
+//     const posts = await database.any(
+//       "SELECT * FROM posts LEFT JOIN comments using (post_id) ORDER BY posts.created_at, post_id, comments.created_at"
+//     );
+//     console.log(posts);
+//     res.send(posts);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 //update user's current room
-router.post("/updateRoom", async (req, res) => {
-  const newRoom = req.body.newRoom;
-  const userId = req.body.userId;
-  console.log("hello");
-  console.log(newRoom);
-  console.log(userId);
-  res.send("hello");
-  try {
-    let queryString = `UPDATE user_info SET current_room = $1 WHERE user_id = $2`;
-    await database.none(queryString, [newRoom, userId]);
-  } catch (error) {
-    console.log(error);
-  }
-});
+// router.post("/updateRoom", async (req, res) => {
+//   const newRoom = req.body.newRoom;
+//   const userId = req.body.userId;
+//   console.log("hello");
+//   console.log(newRoom);
+//   console.log(userId);
+//   res.send("hello");
+//   try {
+//     let queryString = `UPDATE user_info SET current_room = $1 WHERE user_id = $2`;
+//     await database.none(queryString, [newRoom, userId]);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 //update user's player inventory
-router.post("/updatePlayerInventory", async (req, res) => {
-  const playerInventory = JSON.stringify(req.body.playerInventory);
-  const userId = req.body.userId;
-  console.log("hello");
-  console.log(playerInventory);
-  res.send("hello");
-  try {
-    let queryString = `UPDATE user_inventory SET items = $1 WHERE user_id = $2`;
-    await database.none(queryString, [playerInventory, userId]);
-  } catch (error) {
-    console.log(error);
-  }
-});
+// router.post("/updatePlayerInventory", async (req, res) => {
+//   const playerInventory = JSON.stringify(req.body.playerInventory);
+//   const userId = req.body.userId;
+//   console.log("hello");
+//   console.log(playerInventory);
+//   res.send("hello");
+//   try {
+//     let queryString = `UPDATE user_inventory SET items = $1 WHERE user_id = $2`;
+//     await database.none(queryString, [playerInventory, userId]);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 //update user's game state
-router.post("/updatePlayerGameState", async (req, res) => {
-  const playerGameState = JSON.stringify(req.body.roomEvaluateInfo);
-  const userId = req.body.userId;
-  res.send("hello");
-  try {
-    let queryString = `UPDATE user_info SET game_state = $1 WHERE user_id = $2`;
-    await database.none(queryString, [playerGameState, userId]);
-  } catch (error) {
-    console.log(error);
-  }
-});
+// router.post("/updatePlayerGameState", async (req, res) => {
+//   const playerGameState = JSON.stringify(req.body.roomEvaluateInfo);
+//   const userId = req.body.userId;
+//   res.send("hello");
+//   try {
+//     let queryString = `UPDATE user_info SET game_state = $1 WHERE user_id = $2`;
+//     await database.none(queryString, [playerGameState, userId]);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
+//! not in point and click below here
 //add comments to posts
 // router.post("/addComment", async (req, res) => {
 //   console.log(req.body.newComment);

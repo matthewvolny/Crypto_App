@@ -400,6 +400,8 @@ function App() {
         setTrendingCoins,
         highlightChart,
         setHighlightChart,
+        loggedIn,
+        setLoggedIn,
       }}
     >
       <div className="container">

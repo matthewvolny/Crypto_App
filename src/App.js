@@ -383,7 +383,8 @@ function App() {
     fetchInitialCoinSet();
     fetchTopExchanges();
     fetchTrendingCoins();
-    fetchAllRankedCoins(1, 15);
+    //fetchAllRankedCoins(1, 15);
+    fetchAllRankedCoins(1, 10);
   }, []);
 
   return (
@@ -428,7 +429,15 @@ function App() {
                   element={<Portfolio accountData={accountData} />}
                 />
                 <Route path="/currencies/:id" element={<Chart />} />
-                <Route path="/currencies" element={<CoinlistHeader />} />
+                <Route
+                  path="/currencies"
+                  element={
+                    <CoinlistHeader
+                      coinData={coinData}
+                      setCoinData={setCoinData}
+                    />
+                  }
+                />
               </Routes>
               {
                 currentRoute === "portfolio" ? (
@@ -436,7 +445,7 @@ function App() {
                 ) : currentRoute === "currencies" ? (
                   <>
                     <div className="coinlist-container">
-                      <Coinlist coinData={coinData} setCoinData={setCoinData} />
+                      <Coinlist coinData={coinData} />
                     </div>
                   </>
                 ) : currentRoute === "chart" ? (

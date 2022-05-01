@@ -18,6 +18,7 @@ export default function Sidebar({ firstCoinData }) {
     setAccountData,
     highlightChart,
     setHighlightChart,
+    loggedIn,
   } = useContext(Context);
   const [selectedCoinDataWithDescription, setSelectedCoinDataWithDescription] =
     useState();
@@ -123,23 +124,25 @@ export default function Sidebar({ firstCoinData }) {
         <img src={cryptoCharacter} alt="logo" />
       </div>
       <div id="sidebar-line"></div>
-      <div className="sidebar-home">
-        <NavLink
-          className="sidebar-navlink"
-          to={`/portfolio`}
-          onMouseEnter={() => {
-            //function to buy mock coins 3 months ago
-            buyMockCoinsThreeMonthsAgo();
-          }}
-          onClick={(e) => {
-            handleClick(e);
-            setCurrentRoute("portfolio");
-            setSelectedCoinData();
-          }}
-        >
-          Home
-        </NavLink>
-      </div>
+      {loggedIn && (
+        <div className="sidebar-home">
+          <NavLink
+            className="sidebar-navlink"
+            to={`/portfolio`}
+            onMouseEnter={() => {
+              //function to buy mock coins 3 months ago
+              buyMockCoinsThreeMonthsAgo();
+            }}
+            onClick={(e) => {
+              handleClick(e);
+              setCurrentRoute("portfolio");
+              setSelectedCoinData();
+            }}
+          >
+            Home
+          </NavLink>
+        </div>
+      )}
       <div className="sidebar-market">
         <NavLink
           className="sidebar-navlink"

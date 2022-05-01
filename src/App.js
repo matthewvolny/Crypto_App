@@ -8,6 +8,7 @@ import Market from "./components/Market";
 import HeldCoinsList from "./components/HeldCoinsList";
 import CoinlistHeader from "./components/CoinlistHeader";
 import Coinlist from "./components/Coinlist";
+import CoinsHeader from "./components/CoinsHeader";
 import PortfolioHeader from "./components/PortfolioHeader";
 import Chart from "./components/Chart";
 import ChartHeader from "./components/ChartHeader";
@@ -166,43 +167,6 @@ function App() {
     }
     return price?.toFixed(2);
   };
-
-  //(2)initial api call retrieves list data for a subset of coins
-  // const fetchInitialCoinSet = () => {
-  //   axios
-  //     .get(
-  //       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true&price_change_percentage=24h%2C7d"
-  //     )
-  //     .then((response) => {
-  //       const data = response.data;
-  //       console.log("data right out of fetch request");
-  //       console.log(data);
-  //       const coinDataArray = [];
-  //       data.forEach((coin) => {
-  //         debugger;
-  //         coinDataArray.push({
-  //           id: coin.id,
-  //           rank: coin.market_cap_rank,
-  //           image: coin.image,
-  //           name: coin.name,
-  //           symbol: coin.symbol,
-  //           price: roundCoinPrice(
-  //             coin.current_price
-  //           ), /*?.toLocaleString("en-US"), //!not added commas*/,
-  //           percentChange24hr:
-  //             coin.price_change_percentage_24h_in_currency.toFixed(2),
-  //           percentChange7d:
-  //             coin.price_change_percentage_7d_in_currency.toFixed(2),
-  //           marketCap: coin.market_cap.toLocaleString("en-US"),
-  //           volume24hr: coin.total_volume.toLocaleString("en-US"),
-  //           sparkline: roundSparklineData(coin.sparkline_in_7d),
-  //         });
-  //       });
-  //       console.log("initial CoinData fetch after push");
-  //       console.log(coinDataArray);
-  //       setCoinData(coinDataArray);
-  //     });
-  // };
 
   const fetchAllRankedCoins = async (initialPage, stopIndex) => {
     console.log("coinData state before copying in fetch");
@@ -419,6 +383,8 @@ function App() {
                   accountData={accountData}
                   coinData={coinData}
                 />
+              ) : currentRoute === "currencies" ? (
+                <CoinsHeader />
               ) : (
                 <MarketHeader />
               )}
@@ -443,11 +409,9 @@ function App() {
                 currentRoute === "portfolio" ? (
                   <HeldCoinsList />
                 ) : currentRoute === "currencies" ? (
-                  <>
-                    <div className="coinlist-container">
-                      <Coinlist coinData={coinData} />
-                    </div>
-                  </>
+                  <div className="coinlist-container">
+                    <Coinlist coinData={coinData} />
+                  </div>
                 ) : currentRoute === "chart" ? (
                   <NewsFeed />
                 ) : (

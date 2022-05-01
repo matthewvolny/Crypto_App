@@ -17,11 +17,11 @@ export default function CoinDescription() {
       </div>
       <div className="section">
         <div className="coin-description-heading">Market Capitalization</div>
-        <div>{selectedCoinData?.marketCap}</div>
+        <div>${selectedCoinData?.marketCap}</div>
       </div>
       <div className="section">
         <div className="coin-description-heading">Volume(24hr)</div>
-        <div>{selectedCoinData?.volume24hr}</div>
+        <div>${selectedCoinData?.volume24hr}</div>
       </div>
       <div className="section">
         <div className="coin-description-heading">Description</div>

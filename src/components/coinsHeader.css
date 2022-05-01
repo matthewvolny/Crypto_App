@@ -1,4 +1,4 @@
-.market-heading-and-searchbar-flex {
+.coins-heading-flex {
   display: flex;
   align-items: flex-end;
   width: 100%;
@@ -6,7 +6,7 @@
   min-height: 14%;
 }
 
-.market-header {
+.coins-header {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -16,7 +16,7 @@
   height: 100%;
 }
 
-.market-header-name {
+.coins-header-name {
   color: #5e80ff;
   font-weight: bold;
   font-size: 2.1rem;

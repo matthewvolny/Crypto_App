@@ -13,7 +13,7 @@ export default function PortfolioHeader({ accountData, coinData }) {
     if (lidoStakedEther > 0) {
       return `+${lidoStakedEther.percentChange24hr}`;
     } else {
-      return `-${lidoStakedEther.percentChange24hr}`;
+      return `${lidoStakedEther.percentChange24hr}`;
     }
   };
 
@@ -30,16 +30,17 @@ export default function PortfolioHeader({ accountData, coinData }) {
               accountData?.accountBalanceChartData.hourData[
                 accountData?.accountBalanceChartData.hourData.length - 1
               ].value
-            )
-              .toFixed(2)
-              .toLocaleString("en-US")}
+            ).toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
           </div>
           <div className="portfolio-header-percent">
             {<FindLidoStakedEtherPercentChange24hr />}%
           </div>
         </div>
         <div className="portfolio-header-id">
-          <span className="account-number-stars">*** ***</span>
+          <span className="account-number-stars">*** ***&nbsp;</span>
           {accountData?.userInfo.accountNumber}
         </div>
       </div>

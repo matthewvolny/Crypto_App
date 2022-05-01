@@ -25,19 +25,33 @@ export default function BitcoinAndEthereumInfo({ coinData }) {
     <div>
       <div className="bitcoin-and-ethereum-headers">Bitcoin</div>
       <div>
-        {Number(bitcoinAndEthereumData?.bitcoinInfo?.price).toLocaleString()}
+        $
+        {Number(bitcoinAndEthereumData?.bitcoinInfo?.price).toLocaleString(
+          "en-US",
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          }
+        )}
       </div>
       <div>{bitcoinAndEthereumData?.bitcoinInfo?.percentChange24hr}</div>
       <div>
-        {bitcoinAndEthereumData?.bitcoinInfo?.volume24hr.toLocaleString()}
+        ${bitcoinAndEthereumData?.bitcoinInfo?.volume24hr.toLocaleString()}
       </div>
       <div className="bitcoin-and-ethereum-headers">Ethereum</div>
       <div>
-        {Number(bitcoinAndEthereumData?.ethereumInfo?.price).toLocaleString()}
+        $
+        {Number(bitcoinAndEthereumData?.ethereumCoinInfo?.price).toLocaleString(
+          "en-US",
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          }
+        )}
       </div>
-      <div>{bitcoinAndEthereumData?.ethereumInfo?.percentChange24hr}</div>
+      <div>{bitcoinAndEthereumData?.ethereumCoinInfo?.percentChange24hr}</div>
       <div>
-        {bitcoinAndEthereumData?.ethereumInfo?.volume24hr.toLocaleString()}
+        ${bitcoinAndEthereumData?.ethereumCoinInfo?.volume24hr.toLocaleString()}
       </div>
     </div>
   );

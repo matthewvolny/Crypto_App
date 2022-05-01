@@ -11,8 +11,13 @@ export default function LoginForm({
   setFormVisible,
 }) {
   const isMounted = useRef(false);
-  const { loggedIn, setLoggedIn, accountData, setAccountData } =
-    useContext(Context);
+  const {
+    loggedIn,
+    setLoggedIn,
+    accountData,
+    setAccountData,
+    setChartRerenderAtLoginClick,
+  } = useContext(Context);
   const [loginInfo, setLoginInfo] = useState({
     name: "",
     password: "",
@@ -58,43 +63,13 @@ export default function LoginForm({
           //!can display something to the screen here, and clear input
           console.log("login failed");
         } else {
-          //!update user data (this is not putting the data back the correct way)
-          // setAccountData({
-          //   ...accountData,
-          //   userInfo: {
-          //     accountNumber: data[0].account_number,
-          //     name: data[0].user_name,
-          //     watchedCoins: data[0].watched_coins,
-          //   },
-          // });
-          console.log(accountData);
-          console.log(data[0].account_number);
-          console.log(data[0].user_name);
-          console.log(data[0].watched_coins);
-          //!
+          setChartRerenderAtLoginClick(false);
           setLoggedIn(true);
-
           setRetrievedUserData({
             accountNumber: data[0].account_number,
             name: data[0].user_name,
             watchedCoins: data[0].watched_coins,
           });
-
-          //!
-          // setAccountData({
-          //   userInfo: {
-          //     accountNumber: data[0].account_number,
-          //     name: data[0].user_name,
-          //     watchedCoins: data[0].watched_coins,
-          //   },
-          //   heldCoins: [...accountData.heldCoins],
-          //   accountBalanceChartData: {
-          //     hourData: [...accountData.accountBalanceChartData.hourData],
-          //     dayData: [...accountData.accountBalanceChartData.dayData],
-          //     weekData: [...accountData.accountBalanceChartData.weekData],
-          //   },
-          // });
-
           hideLoginForm();
         }
       })

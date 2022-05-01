@@ -1,8 +1,16 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import "./barChart.css";
 import { Bar } from "britecharts-react";
+import Context from "../context/context";
 
 export default function BarChart({ exchange }) {
+  const { chartRerenderAtLoginClick, setChartRerenderAtLoginClick } =
+    useContext(Context);
+  const [highlightBarFunction, setHighlightBarFunction] = useState();
+  const [labelsSize, setLabelsSize] = useState();
+  const [animationToggle, setAnimationToggle] = useState(true);
+  const isMounted = useRef(false);
+
   //!for 1 day timestamps are every 10 minutes (24 x6)
   //!for 1 week timestamps are every hour (24 x7)
 
@@ -26,18 +34,21 @@ export default function BarChart({ exchange }) {
 
   // barChart.highlightBarFunction(null); // will disable the default highlight effect
 
-  const [highlightBarFunction, setHighlightBarFunction] = useState();
-  const [labelsSize, setLabelsSize] = useState();
-
   const handleHighlight = (data) => {
     return null;
   };
 
+  //!hovering over home with market open re-renders
+  useEffect(() => {
+    if (isMounted.current && chartRerenderAtLoginClick) {
+      setAnimationToggle(false);
+    } else {
+      isMounted.current = true;
+      setChartRerenderAtLoginClick(true);
+    }
+  }, [chartRerenderAtLoginClick]);
+
   return (
-    // <div
-    //   key={Math.floor(Math.random() * 10000)}
-    //   className="bar-chart-container"
-    // >
     <div
       key={Math.floor(Math.random() * 10000)}
       className="bar-chart-inner-container"
@@ -57,7 +68,7 @@ export default function BarChart({ exchange }) {
         <Bar
           data={barData}
           colorSchema={colorPalette}
-          isAnimated={true}
+          isAnimated={animationToggle}
           width={225}
           height={150}
           yTicks={3}

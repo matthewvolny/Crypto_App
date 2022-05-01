@@ -6,8 +6,10 @@ import Context from "../context/context";
 export default function DonutChart() {
   const { accountData, setAccountData } = useContext(Context);
   const [highlightedSlice, setHighlightedSlice] = useState();
-  const isMounted = useRef(false);
+  // const isMounted = useRef(false);
   const [indexedHeldCoins, setIndexedHeldCoins] = useState();
+  const [animationToggle, setAnimationToggle] = useState(true);
+  const isMounted = useRef(false);
 
   //!accoutn data held coins needs to look like this
   // [
@@ -91,6 +93,14 @@ export default function DonutChart() {
     );
   });
 
+  useEffect(() => {
+    if (isMounted.current) {
+      setAnimationToggle(false);
+    } else {
+      isMounted.current = true;
+    }
+  }, []);
+
   return (
     <div className="white-donut-container">
       {accountData && (
@@ -101,7 +111,7 @@ export default function DonutChart() {
               externalRadius={95}
               internalRadius={50}
               colorSchema={colorPalette}
-              isAnimated={true}
+              isAnimated={animationToggle}
               //width={200}
               // duration={1000}
 

@@ -37,6 +37,8 @@ function App() {
   const [exchangesInfo, setExchangesInfo] = useState();
   const [trendingCoinsLocal, setTrendingCoinsLocal] = useState([]);
   const [highlightChart, setHighlightChart] = useState(false);
+  const [chartRerenderAtLoginClick, setChartRerenderAtLoginClick] =
+    useState(true);
 
   //(ddd)retrieves price data (mockAccountChartData) for all time (daily) and
   const fetchMockAccountBalanceChartData = async (duration) => {
@@ -366,6 +368,8 @@ function App() {
         setHighlightChart,
         loggedIn,
         setLoggedIn,
+        chartRerenderAtLoginClick,
+        setChartRerenderAtLoginClick,
       }}
     >
       <div className="container">

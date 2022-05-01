@@ -3,7 +3,6 @@ import closeIcon from "../images/close-icon.png";
 import "./loginForm.css";
 import Context from "../context/context";
 import axios from "axios";
-import { isCompositeComponent } from "react-dom/test-utils";
 
 export default function LoginForm({
   typeOfForm,
@@ -12,7 +11,8 @@ export default function LoginForm({
   setFormVisible,
 }) {
   const isMounted = useRef(false);
-  // const [loggedIn, setLoggedIn] = useContext(Context);
+  const { loggedIn, setLoggedIn, accountData, setAccountData } =
+    useContext(Context);
   const [loginInfo, setLoginInfo] = useState({
     name: "",
     password: "",
@@ -57,7 +57,17 @@ export default function LoginForm({
           //!can display something to the screen here, and clear input
           console.log("login failed");
         } else {
-          //setLoggedIn(true);
+          //update user data
+          setAccountData({
+            ...accountData,
+            userInfo: {
+              accountNumber: data[0].account_number,
+              name: data[0].user_name,
+              watchedCoins: data[0].watched_coins,
+            },
+          });
+          setLoggedIn(true);
+          hideLoginForm();
         }
       })
       .catch((error) => {
@@ -68,10 +78,12 @@ export default function LoginForm({
   //signs up user
   const signupUser = (loginInfo) => {
     console.log("in signup user");
-    // const randomNum = Math.floor(Math.random() * 10000);
+    const randomNum = Math.floor(1000 + Math.random() * 9000);
+    console.log(randomNum);
     axios
       .post("http://localhost:3000/signup", {
         loginInfo: loginInfo,
+        accountNumber: randomNum,
       })
       .then((res) => {
         console.log(`statusCode: ${res.status}`);

@@ -59,17 +59,17 @@ router.get("/login", async (req, res) => {
 router.post("/signup", async (req, res) => {
   const { name, email, password } = req.body.loginInfo;
   // const currentRoom = req.body.currentRoom;
-  const userId = req.body.userId;
+  const accountNumber = req.body.accountNumber;
   console.log(name);
   console.log(email);
   console.log(password);
-  console.log(userId);
+  // console.log(userId);
   console.log("in retrieve/signup");
   res.send("from retrieve/signup");
   try {
     let queryString =
-      "INSERT INTO user_info (user_id, user_name, user_email, user_password) VALUES ($1, $2, $3, $4)";
-    await database.none(queryString, [userId, name, email, password]);
+      "INSERT INTO user_info (account_number, user_name, user_email, user_password) VALUES ($1, $2, $3, $4)";
+    await database.none(queryString, [accountNumber, name, email, password]);
   } catch (error) {
     console.log(error);
     res.send("signup failed");

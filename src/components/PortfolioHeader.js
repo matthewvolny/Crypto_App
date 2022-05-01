@@ -39,7 +39,8 @@ export default function PortfolioHeader({ accountData, coinData }) {
           </div>
         </div>
         <div className="portfolio-header-id">
-          <span className="account-number-stars">*** ***</span> 1473
+          <span className="account-number-stars">*** ***</span>
+          {accountData?.userInfo.accountNumber}
         </div>
       </div>
     </div>

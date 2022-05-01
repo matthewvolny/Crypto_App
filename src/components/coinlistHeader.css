@@ -41,7 +41,8 @@
 .coinlist-header-inner-container div {
   /* color: #998ce3; */
   font-size: 1.1rem;
-  letter-spacing: 0.04rem;
+  letter-spacing: 0.07rem;
+  font-weight: 500;
 }
 
 .coinlist-header-rank {

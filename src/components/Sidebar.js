@@ -198,9 +198,9 @@ export default function Sidebar({ firstCoinData }) {
         </NavLink>
       </div>
 
-      <div>Trade</div>
-      <div>Settings</div>
-      <div id="logout">Log Out</div>
+      <div className="trade-button">Trade</div>
+      <div className="settings-button">Settings</div>
+      {/* <div id="logout">Log Out</div> */}
     </>
   );
 }

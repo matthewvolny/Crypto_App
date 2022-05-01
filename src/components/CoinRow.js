@@ -78,11 +78,27 @@ export default function CoinRow(props) {
   //   var currency = formatter.format(num);
   // };
 
+  const Format24HourPercentChange = () => {
+    if (percentChange24hr > 0) {
+      return `+${percentChange24hr}`;
+    } else {
+      return `${percentChange24hr}`;
+    }
+  };
+
+  const Format7DayPercentChange = () => {
+    if (percentChange7d > 0) {
+      return `+${percentChange7d}`;
+    } else {
+      return `${percentChange7d}`;
+    }
+  };
+
   return (
     <div className="coin-row">
-      <div className="star-container">
+      {/* <div className="star-container">
         <img src={star} alt="star" />
-      </div>
+      </div> */}
       <div className="coin-row-rank">{rank}</div>
       <div className="coin-row-icon-container">
         <img src={image} alt="crypto-icon" className="icon"></img>
@@ -101,36 +117,42 @@ export default function CoinRow(props) {
           setHighlightChart(true);
         }}
       >
-        {name}
+        <div className="navlink-flex-box-container">
+          <div className="coinlist-name">{name}</div>
+          <div className="coin-row-symbol">
+            <span className="coin-row-parentheses">(</span>
+            {symbol.toUpperCase()}
+            <span className="coin-row-parentheses">)</span>
+          </div>
+        </div>
       </NavLink>
-      <div className="coin-row-symbol">
-        <span className="coin-row-parentheses">(</span>
-        {symbol.toUpperCase()}
-        <span className="coin-row-parentheses">)</span>
-      </div>
-      <div>
+
+      <div className="coin-row-price">
         $
         {Number(price).toLocaleString("en-US", {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         })}
       </div>
-      <div className="percent-change">{percentChange24hr}</div>
-      <div className="percent-change">{percentChange7d}</div>
-      {/* <div>${marketCap}</div>
-      <div>${volume24hr}</div> */}
-      {/* <div className="chart"></div> */}
-      <Sparklines
-        // className="sparkline-container"
-        data={sparkline}
-        // width={100}
-        // height={20}
-        // margin={5}
-      >
-        <SparklinesLine
-          style={{ strokeWidth: 3, stroke: sparklineColor, fill: "none" }}
-        />
-      </Sparklines>
+      <div className="coin-row-percent-change">
+        {<Format24HourPercentChange />}
+      </div>
+      <div className="coin-row-percent-change">
+        {<Format7DayPercentChange />}
+      </div>
+      <div className="sparkline-container">
+        <Sparklines
+          // className="sparkline-container"
+          data={sparkline}
+          // width={100}
+          // height={20}
+          // margin={5}
+        >
+          <SparklinesLine
+            style={{ strokeWidth: 4, stroke: sparklineColor, fill: "none" }}
+          />
+        </Sparklines>
+      </div>
     </div>
   );
 }

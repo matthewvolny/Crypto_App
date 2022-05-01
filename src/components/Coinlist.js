@@ -72,7 +72,7 @@ export default function Coinlist({ coinData }) {
     <div className="coinlist-secondary-container">
       <div className="coinlist">
         {coinData?.map((coin, index) => {
-          if (index < 15) {
+          if (index < 6) {
             return <CoinRow coin={coin} />;
           }
         })}

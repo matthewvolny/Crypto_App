@@ -1,12 +1,11 @@
 .coin-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   background-color: white;
-  /* border-radius: 1em; */
   width: 100%;
-  border: 1px solid teal;
-  padding: 0.3em 0.8em;
+  border: 1px solid rgb(239, 239, 239);
+  padding: 0.8em 1.1em;
+  min-height: 13%;
 }
 
 .coin-row div {
@@ -15,7 +14,7 @@
   /* padding: 1em; */
 }
 
-.star-container {
+/* .star-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,52 +25,87 @@
 .star-container > img {
   width: 100%;
   border: 1px solid red;
-}
+} */
 
 .coin-row-rank {
-  border: 1px solid salmon;
+  /* border: 1px solid salmon; */
+  text-align: center;
+  width: 4.5%;
 }
 
 .coin-row-icon-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid green;
-  width: 4%;
+  /* border: 1px solid green; */
+  width: 10%;
 }
 
 .icon {
   width: 30px;
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
 }
-
-.coin-row > svg {
-  width: 125px;
-}
-
-/* .sparkline-container {
-  width: 50px;
-  border: 1px solid grey;
-} */
-
-/* .chart {
-  display: inline-block;
-  border: 1px solid green;
-} */
 
 .coinlist-navlink {
-  font-size: 1.2rem;
+  width: 100%;
   margin-top: 0;
   text-decoration: none;
-  color: black;
-  border: 1px solid plum;
+  width: 19%;
+  height: 100%;
+  /* border: 1px solid blue; */
+}
+
+.navlink-flex-box-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  /* border: 1px solid plum; */
+  height: 100%;
+  margin-left: 0.8rem;
+}
+
+.coinlist-name {
+  /* border: 1px solid rgb(112, 73, 112); */
+  font-size: 1.1rem;
+  color: #5e80ff;
+  font-weight: bold;
 }
 
 .coin-row-symbol {
-  border: red 1px solid;
+  /* border: red 1px solid; */
+  font-size: 0.9rem;
+  color: grey;
 }
 
 .coin-row-parentheses {
   position: relative;
   bottom: 2px;
+}
+
+.coin-row-price {
+  /* border: 1px solid blue; */
+  width: 15%;
+  text-align: center;
+}
+
+.coin-row-percent-change {
+  /* border: 1px solid red; */
+  width: 14%;
+  text-align: center;
+}
+
+.sparkline-container {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 23.5%;
+  padding: 0em 0.5em;
+  height: 100%;
+}
+.coin-row > svg {
+  margin-top: 0;
+  width: 23%;
+  /* border: 1px solid green; */
 }

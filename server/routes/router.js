@@ -36,20 +36,20 @@ const database = pgPromise(config);
 router.get("/login", async (req, res) => {
   // console.log("in retrieve /login");
   const parsedLoginInfo = JSON.parse(req.query.loginInfo);
-  const { name, password } = parsedLoginInfo;
-  const userId = req.query.userIdNum;
-  console.log(name, password, userId); // Mark 123456789 1593
+  const { email, password } = parsedLoginInfo;
+  // const userId = req.query.userIdNum;
+  console.log(email, password);
   try {
-    const { name, password } = parsedLoginInfo;
-    const userId = req.query.userIdNum;
+    const { email, password } = parsedLoginInfo;
+    // const userId = req.query.userIdNum;
     // const playerGame = await database.any(
     //   `SELECT * FROM user_info WHERE user_id = '${userId}' AND user_name = '${name}' AND user_password = '${password}'`
     // );
-    const playerGame = await database.any(
-      `SELECT * FROM user_info INNER JOIN user_inventory using (user_id) WHERE user_id = '${userId}' AND user_name = '${name}' AND user_password = '${password}'`
+    const userInfo = await database.any(
+      `SELECT * FROM user_info WHERE user_email = '${email}' AND user_password = '${password}'`
     );
 
-    res.send(playerGame);
+    res.send(userInfo);
   } catch (error) {
     console.log("sorry, user not found");
   }
@@ -72,6 +72,7 @@ router.post("/signup", async (req, res) => {
     await database.none(queryString, [userId, name, email, password]);
   } catch (error) {
     console.log(error);
+    res.send("signup failed");
   }
 });
 

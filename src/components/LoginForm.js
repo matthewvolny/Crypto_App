@@ -3,6 +3,7 @@ import closeIcon from "../images/close-icon.png";
 import "./loginForm.css";
 import Context from "../context/context";
 import axios from "axios";
+import { isCompositeComponent } from "react-dom/test-utils";
 
 export default function LoginForm({
   typeOfForm,
@@ -40,37 +41,37 @@ export default function LoginForm({
     }
   }, [formVisible]);
 
-  //signs up, or logs in user
-  // const loginUser = (loginInfo) => {
-  //   axios
-  //     .get("/login", {
-  //       params: {
-  //         loginInfo,
-  //       },
-  //     })
-  //     .then((response) => {
-  //       const data = response.data; // itemsCollected = [Leaf]
-  //       if (data.length === 0) {
-  //         //!can display something to the screen here, and clear input
-  //         console.log("login failed");
-  //       } else {
-  //         //set all aspects of the game state from the db call on login
-  //         // setLoggedIn(true);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // };
+  //login user and retrieve user data
+  const loginUser = (loginInfo) => {
+    axios
+      .get("http://localhost:3000/login", {
+        params: {
+          loginInfo,
+        },
+      })
+      .then((response) => {
+        const data = response.data; // itemsCollected = [Leaf]
+        console.log("response data from login get request");
+        console.log(data);
+        if (data.length === 0) {
+          //!can display something to the screen here, and clear input
+          console.log("login failed");
+        } else {
+          //setLoggedIn(true);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
-  //signs up, or logs in user
+  //signs up user
   const signupUser = (loginInfo) => {
     console.log("in signup user");
-    const randomNum = Math.floor(Math.random() * 10000);
+    // const randomNum = Math.floor(Math.random() * 10000);
     axios
-      .post("/signup", {
+      .post("http://localhost:3000/signup", {
         loginInfo: loginInfo,
-        userId: randomNum,
       })
       .then((res) => {
         console.log(`statusCode: ${res.status}`);
@@ -79,8 +80,7 @@ export default function LoginForm({
       .catch((error) => {
         console.error(error);
       });
-    // setUserLoggedIn(true);
-    setUserId(randomNum);
+    setTypeOfForm("login");
   };
 
   //stores typed form inputs in state
@@ -93,7 +93,11 @@ export default function LoginForm({
   const handleSubmit = (e) => {
     console.log("submitted");
     e.preventDefault();
-    signupUser(loginInfo);
+    if (typeOfForm === "signup") {
+      signupUser(loginInfo);
+    } else {
+      loginUser(loginInfo);
+    }
   };
 
   return (
@@ -110,7 +114,7 @@ export default function LoginForm({
                 src={closeIcon}
               />
               <div>
-                New to CryptoMondo?
+                New to CryptoMondo?&nbsp;
                 <span
                   className="link"
                   onClick={() => {
@@ -122,39 +126,42 @@ export default function LoginForm({
               </div>
             </div>
           ) : (
-            <div>
-              <div className="heading">Create an account</div>
-              <img
-                onClick={hideLoginForm}
-                alt="close-button"
-                className="close-button"
-                src={closeIcon}
+            <>
+              <div>
+                <div className="heading">Create an account</div>
+                <img
+                  onClick={hideLoginForm}
+                  alt="close-button"
+                  className="close-button"
+                  src={closeIcon}
+                />
+                <div>
+                  Gain access to additional features such as a personal
+                  Watchlist and Portfolio tracking.
+                </div>
+                <div>
+                  Already have an account?&nbsp;
+                  <span
+                    className="link"
+                    onClick={() => {
+                      setTypeOfForm("login");
+                    }}
+                  >
+                    Sign in
+                  </span>
+                </div>
+              </div>
+              <div>Name</div>
+              <input
+                name="name"
+                onChange={handleChange}
+                type="text"
+                value={loginInfo.name}
+                placeholder="Enter your name"
               />
-              <div>
-                Gain access to additional features such as a personal Watchlist
-                and Portfolio tracking.
-              </div>
-              <div>
-                Already have an account?
-                <span
-                  className="link"
-                  onClick={() => {
-                    setTypeOfForm("login");
-                  }}
-                >
-                  Sign in
-                </span>
-              </div>
-            </div>
+            </>
           )}
-          <div>Name</div>
-          <input
-            name="name"
-            onChange={handleChange}
-            type="text"
-            value={loginInfo.name}
-            placeholder="Enter your name"
-          />
+
           <div>Email Address</div>
           <input
             name="email"

@@ -5,7 +5,7 @@ import Context from "../context/context";
 
 export default function DonutChart() {
   const { accountData, setAccountData } = useContext(Context);
-  const [highlightedSlice, setHighlightedSlice] = useState();
+  //const [highlightedSlice, setHighlightedSlice] = useState();
   // const isMounted = useRef(false);
   const [indexedHeldCoins, setIndexedHeldCoins] = useState();
   const [animationToggle, setAnimationToggle] = useState(true);
@@ -35,11 +35,13 @@ export default function DonutChart() {
   const handleMouseOver = (data) => {
     console.log("Mouse Over");
     console.log(data);
-    setHighlightedSlice(data.data.id);
+    setAnimationToggle(false);
+    //setHighlightedSlice(data.data.id);
   };
 
   const handleMouseOut = (data) => {
-    setHighlightedSlice(99999);
+    setAnimationToggle(false);
+    //setHighlightedSlice(99999);
   };
 
   //misc sample color schemas
@@ -94,7 +96,7 @@ export default function DonutChart() {
   });
 
   useEffect(() => {
-    if (isMounted.current) {
+    if (isMounted.current && animationToggle) {
       setAnimationToggle(false);
     } else {
       isMounted.current = true;
@@ -121,9 +123,10 @@ export default function DonutChart() {
               //   bottom: 100,
               //   left: 5,
               // }}
-              highlightSliceById={highlightedSlice}
-              customMouseOver={handleMouseOver}
-              customMouseOut={handleMouseOut}
+              //!maybe add highlight slice later
+              //highlightSliceById={highlightedSlice}
+              // customMouseOver={handleMouseOver}
+              // customMouseOut={handleMouseOut}
             />
             {/* <Legend
             data={donutData}

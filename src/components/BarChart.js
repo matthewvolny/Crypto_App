@@ -4,12 +4,18 @@ import { Bar } from "britecharts-react";
 import Context from "../context/context";
 
 export default function BarChart({ exchange }) {
-  const { chartRerenderAtLoginClick, setChartRerenderAtLoginClick } =
-    useContext(Context);
-  const [highlightBarFunction, setHighlightBarFunction] = useState();
-  const [labelsSize, setLabelsSize] = useState();
+  const {
+    barChartRerenderAtLoginClick,
+    setBarChartRerenderAtLoginClick,
+    barChartRerenderAtHomeHover,
+    setBarChartRerenderAtHomeHover,
+    currentRoute,
+  } = useContext(Context);
+  //const [highlightBarFunction, setHighlightBarFunction] = useState();
+  //const [labelsSize, setLabelsSize] = useState();
   const [animationToggle, setAnimationToggle] = useState(true);
   const isMounted = useRef(false);
+  const isMountedTwo = useRef(false);
 
   //!for 1 day timestamps are every 10 minutes (24 x6)
   //!for 1 week timestamps are every hour (24 x7)
@@ -38,15 +44,19 @@ export default function BarChart({ exchange }) {
     return null;
   };
 
-  //!hovering over home with market open re-renders
+  //!hovering over home with market open gives a flicker (did not work, could be recombined)
   useEffect(() => {
-    if (isMounted.current && chartRerenderAtLoginClick) {
+    if (
+      isMounted.current &&
+      barChartRerenderAtLoginClick &&
+      barChartRerenderAtHomeHover
+    ) {
       setAnimationToggle(false);
     } else {
       isMounted.current = true;
-      setChartRerenderAtLoginClick(true);
+      setBarChartRerenderAtLoginClick(true);
     }
-  }, [chartRerenderAtLoginClick]);
+  }, [barChartRerenderAtLoginClick, barChartRerenderAtHomeHover]);
 
   return (
     <div

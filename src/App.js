@@ -37,7 +37,9 @@ function App() {
   const [exchangesInfo, setExchangesInfo] = useState();
   const [trendingCoinsLocal, setTrendingCoinsLocal] = useState([]);
   const [highlightChart, setHighlightChart] = useState(false);
-  const [chartRerenderAtLoginClick, setChartRerenderAtLoginClick] =
+  const [barChartRerenderAtLoginClick, setBarChartRerenderAtLoginClick] =
+    useState(true);
+  const [barChartRerenderAtHomeHover, setBarChartRerenderAtHomeHover] =
     useState(true);
 
   //(ddd)retrieves price data (mockAccountChartData) for all time (daily) and
@@ -351,6 +353,11 @@ function App() {
     //fetchAllRankedCoins(1, 5);
   }, []);
 
+  //logs out user, called from loginSignup component
+  const logoutUser = () => {
+    setLoggedIn(false);
+  };
+
   return (
     <Context.Provider
       value={{
@@ -368,8 +375,10 @@ function App() {
         setHighlightChart,
         loggedIn,
         setLoggedIn,
-        chartRerenderAtLoginClick,
-        setChartRerenderAtLoginClick,
+        barChartRerenderAtLoginClick,
+        setBarChartRerenderAtLoginClick,
+        barChartRerenderAtHomeHover,
+        setBarChartRerenderAtHomeHover,
       }}
     >
       <div className="container">
@@ -433,7 +442,7 @@ function App() {
             </div>
             <div className="right-flex">
               <div className="login-and-searchbar-flex">
-                <LoginAndSignUp />
+                <LoginAndSignUp loggedIn={loggedIn} logoutUser={logoutUser} />
                 <SearchBar />
               </div>
               {currentRoute === "portfolio" ? (

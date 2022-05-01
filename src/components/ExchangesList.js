@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Profiler, useEffect } from "react";
 import BarChart from "./BarChart";
 import "./barChart.css";
 

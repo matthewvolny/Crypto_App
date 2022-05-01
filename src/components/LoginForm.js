@@ -16,7 +16,7 @@ export default function LoginForm({
     setLoggedIn,
     accountData,
     setAccountData,
-    setChartRerenderAtLoginClick,
+    setBarChartRerenderAtLoginClick,
   } = useContext(Context);
   const [loginInfo, setLoginInfo] = useState({
     name: "",
@@ -63,7 +63,7 @@ export default function LoginForm({
           //!can display something to the screen here, and clear input
           console.log("login failed");
         } else {
-          setChartRerenderAtLoginClick(false);
+          setBarChartRerenderAtLoginClick(false);
           setLoggedIn(true);
           setRetrievedUserData({
             accountNumber: data[0].account_number,

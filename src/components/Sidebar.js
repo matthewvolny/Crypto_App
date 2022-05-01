@@ -19,7 +19,9 @@ export default function Sidebar({ firstCoinData }) {
     highlightChart,
     setHighlightChart,
     loggedIn,
+    setBarChartRerenderAtHomeHover,
   } = useContext(Context);
+
   const [selectedCoinDataWithDescription, setSelectedCoinDataWithDescription] =
     useState();
   // const [trendingCoinsLocal, setTrendingCoinsLocal] = useState([]);
@@ -132,12 +134,15 @@ export default function Sidebar({ firstCoinData }) {
             to={`/portfolio`}
             onMouseEnter={() => {
               //function to buy mock coins 3 months ago
+              setBarChartRerenderAtHomeHover(false);
               buyMockCoinsThreeMonthsAgo();
             }}
             onClick={(e) => {
               handleClick(e);
               setCurrentRoute("portfolio");
               setSelectedCoinData();
+              //!
+              setBarChartRerenderAtHomeHover(true);
             }}
           >
             Home

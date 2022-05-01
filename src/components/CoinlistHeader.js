@@ -61,12 +61,43 @@ export default function CoinlistHeader({ coinData, setCoinData }) {
     <div className="coinlist-header">
       <div className="coinlist-header-secondary-container">
         <div className="coinlist-header-inner-container">
-          <div onClick={() => sortCoinList("rank")}>Rank</div>
-          <div onClick={() => sortCoinList("name")}>Name</div>
-          <div onClick={() => sortCoinList("price")}>Price</div>
-          <div onClick={() => sortCoinList("percentChange24hr")}>24hr%</div>
-          <div onClick={() => sortCoinList("percentChange7d")}>7d%</div>
-          <div onClick={() => sortCoinList("percentChange7d")}>Last 7 Days</div>
+          <div
+            className="coinlist-header-rank"
+            onClick={() => sortCoinList("rank")}
+          >
+            Rank
+          </div>
+          <div className="coinlist-header-spacer"></div>
+          <div
+            className="coinlist-header-name"
+            onClick={() => sortCoinList("name")}
+          >
+            <div>Name</div>
+          </div>
+          <div
+            className="coinlist-header-price"
+            onClick={() => sortCoinList("price")}
+          >
+            Price
+          </div>
+          <div
+            className="coinlist-header-percent"
+            onClick={() => sortCoinList("percentChange24hr")}
+          >
+            24hr%
+          </div>
+          <div
+            className="coinlist-header-percent"
+            onClick={() => sortCoinList("percentChange7d")}
+          >
+            7d%
+          </div>
+          <div
+            className="coinlist-header-sparkline"
+            onClick={() => sortCoinList("percentChange7d")}
+          >
+            Last 7 Days
+          </div>
         </div>
       </div>
     </div>

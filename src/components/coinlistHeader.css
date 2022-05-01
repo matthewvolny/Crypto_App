@@ -1,8 +1,8 @@
 .coinlist-header {
-  margin-top: 1.5em;
+  margin-top: 0.5em;
   display: flex;
   align-items: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 100%;
   /* flex-grow: 1; */
   padding-left: 1.5em;
@@ -14,7 +14,7 @@
 }
 
 .coinlist-header-secondary-container {
-  border: gold 1px solid;
+  /* border: gold 1px solid; */
   height: 100%;
   margin-top: 0;
   display: flex;
@@ -29,11 +29,67 @@
 
 .coinlist-header-inner-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: white;
-  /* border-radius: 1em; */
+  /* background-color: rgb(255, 255, 255, 0.1); */
+  /* background-color: white; */
+  border-radius: 1em 1em 0em 0em;
   width: 100%;
-  border: 1px solid blue;
-  padding: 0.3em 0.8em;
+  /* border: 1px solid blue; */
+  padding: 0.8em 1.1em;
+}
+
+.coinlist-header-inner-container div {
+  /* color: #998ce3; */
+  font-size: 1.1rem;
+  letter-spacing: 0.04rem;
+}
+
+.coinlist-header-rank {
+  width: 4.5%;
+  /* border: 1px solid red; */
+  text-align: center;
+  color: #3b60e5;
+}
+
+.coinlist-header-spacer {
+  width: 10%;
+}
+
+.coinlist-header-name {
+  width: 19%;
+  /* border: 1px solid red; */
+  color: #3b60e5;
+}
+
+.coinlist-header-name > div {
+  margin-left: 0.8rem;
+  /* border: 1px solid red; */
+}
+
+.coinlist-header-price {
+  width: 15%;
+  /* border: 1px solid red; */
+  text-align: center;
+  color: #3b60e5;
+}
+
+.coinlist-header-percent24hr {
+  width: 15%;
+  /* border: 1px solid red; */
+  text-align: center;
+  color: #fed425;
+}
+
+.coinlist-header-percent {
+  width: 14%;
+  /* border: 1px solid red; */
+  text-align: center;
+  color: #fed425;
+}
+
+.coinlist-header-sparkline {
+  width: 23.5%;
+  /* border: 1px solid red; */
+  text-align: center;
+  color: #fed425;
 }

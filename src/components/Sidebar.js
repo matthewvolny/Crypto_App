@@ -87,32 +87,33 @@ export default function Sidebar({ firstCoinData }) {
 
   //simulating the purchase of 3 different coins three months ago using 50% of account funds
   const buyMockCoinsThreeMonthsAgo = () => {
-    const weekFormatAccountData = accountData.accountBalanceChartData.weekData;
+    const weekFormatAccountData =
+      accountData?.accountBalanceChartData?.weekData;
     const halfOfAccountFinalBalance =
-      weekFormatAccountData[weekFormatAccountData.length - 1].value / 2;
+      weekFormatAccountData[weekFormatAccountData?.length - 1].value / 2;
     const percent23AccountBalance = (halfOfAccountFinalBalance / 100) * 22;
     const percent31AccountBalance = (halfOfAccountFinalBalance / 100) * 37;
     const percent46AccountBalance = (halfOfAccountFinalBalance / 100) * 45;
-    let heldCoinsCopy = [...accountData.heldCoins];
-    for (let i = 0; i < heldCoinsCopy.length; i++) {
+    let heldCoinsCopy = [...accountData?.heldCoins];
+    for (let i = 0; i < heldCoinsCopy?.length; i++) {
       if (heldCoinsCopy[i].coin_id === "ethereum") {
         const coinNumberEthereum =
-          percent46AccountBalance / accountData.heldCoins[i].price3MonthsAgo;
+          percent46AccountBalance / accountData?.heldCoins[i]?.price3MonthsAgo;
         heldCoinsCopy[i].coinNumber = coinNumberEthereum;
         heldCoinsCopy[i].marketValue =
-          accountData.heldCoins[i].currentPrice * coinNumberEthereum;
-      } else if (heldCoinsCopy[i].coin_id === "bitcoin") {
+          accountData?.heldCoins[i]?.currentPrice * coinNumberEthereum;
+      } else if (heldCoinsCopy[i]?.coin_id === "bitcoin") {
         const coinNumberBitcoin =
-          percent31AccountBalance / accountData.heldCoins[i].price3MonthsAgo;
+          percent31AccountBalance / accountData?.heldCoins[i]?.price3MonthsAgo;
         heldCoinsCopy[i].coinNumber = coinNumberBitcoin;
         heldCoinsCopy[i].marketValue =
-          accountData.heldCoins[i].currentPrice * coinNumberBitcoin;
-      } else if (heldCoinsCopy[i].coin_id === "dogecoin") {
+          accountData?.heldCoins[i]?.currentPrice * coinNumberBitcoin;
+      } else if (heldCoinsCopy[i]?.coin_id === "dogecoin") {
         const coinNumberDogeCoin =
-          percent23AccountBalance / accountData.heldCoins[i].price3MonthsAgo;
+          percent23AccountBalance / accountData?.heldCoins[i]?.price3MonthsAgo;
         heldCoinsCopy[i].coinNumber = coinNumberDogeCoin;
         heldCoinsCopy[i].marketValue =
-          accountData.heldCoins[i].currentPrice * coinNumberDogeCoin;
+          accountData?.heldCoins[i]?.currentPrice * coinNumberDogeCoin;
       }
     }
     setAccountData({ ...accountData, heldCoins: heldCoinsCopy });

@@ -19,6 +19,7 @@ export default function LoginForm({
     email: "",
   });
   const [userId, setUserId] = useState();
+  const [retrievedUserData, setRetrievedUserData] = useState();
 
   const hideLoginForm = () => {
     const loginContainer = document.querySelector(".login-container");
@@ -57,16 +58,43 @@ export default function LoginForm({
           //!can display something to the screen here, and clear input
           console.log("login failed");
         } else {
-          //update user data
-          setAccountData({
-            ...accountData,
-            userInfo: {
-              accountNumber: data[0].account_number,
-              name: data[0].user_name,
-              watchedCoins: data[0].watched_coins,
-            },
-          });
+          //!update user data (this is not putting the data back the correct way)
+          // setAccountData({
+          //   ...accountData,
+          //   userInfo: {
+          //     accountNumber: data[0].account_number,
+          //     name: data[0].user_name,
+          //     watchedCoins: data[0].watched_coins,
+          //   },
+          // });
+          console.log(accountData);
+          console.log(data[0].account_number);
+          console.log(data[0].user_name);
+          console.log(data[0].watched_coins);
+          //!
           setLoggedIn(true);
+
+          setRetrievedUserData({
+            accountNumber: data[0].account_number,
+            name: data[0].user_name,
+            watchedCoins: data[0].watched_coins,
+          });
+
+          //!
+          // setAccountData({
+          //   userInfo: {
+          //     accountNumber: data[0].account_number,
+          //     name: data[0].user_name,
+          //     watchedCoins: data[0].watched_coins,
+          //   },
+          //   heldCoins: [...accountData.heldCoins],
+          //   accountBalanceChartData: {
+          //     hourData: [...accountData.accountBalanceChartData.hourData],
+          //     dayData: [...accountData.accountBalanceChartData.dayData],
+          //     weekData: [...accountData.accountBalanceChartData.weekData],
+          //   },
+          // });
+
           hideLoginForm();
         }
       })
@@ -74,6 +102,18 @@ export default function LoginForm({
         console.error(error);
       });
   };
+
+  const [toggle, setToggle] = useState(true);
+
+  useEffect(() => {
+    if (toggle && accountData) {
+      setAccountData({
+        ...accountData,
+        userInfo: retrievedUserData,
+      });
+      setToggle(false);
+    }
+  }, [accountData]);
 
   //signs up user
   const signupUser = (loginInfo) => {

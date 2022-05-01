@@ -30,7 +30,7 @@ moment().format();
 function App() {
   const [coinData, setCoinData] = useState([]);
   const [selectedCoinData, setSelectedCoinData] = useState();
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [accountData, setAccountData] = useState();
   const [currentRoute, setCurrentRoute] = useState();
   const [trendingCoins, setTrendingCoins] = useState();
@@ -137,7 +137,7 @@ function App() {
       };
       setAccountDataAsyncFunction();
     }
-  }, [coinData]);
+  }, [coinData, loggedIn]);
 
   //(3)shortens sparkline data array and rounds to four places
   //!check to make sure the "first" and "last" values are in the shortened array - need for accurate coloring

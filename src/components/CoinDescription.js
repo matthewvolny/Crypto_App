@@ -7,10 +7,6 @@ export default function CoinDescription() {
 
   return (
     <div className="coin-description-container">
-      {/* <div className="section">
-        <div className="coin-description-heading">Name</div>
-        <div>{selectedCoinData?.name}</div>
-      </div> */}
       <div className="section">
         <div className="coin-description-heading">Rank</div>
         <div>#{selectedCoinData?.rank}</div>

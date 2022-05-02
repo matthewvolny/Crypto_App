@@ -11,6 +11,7 @@ export default function SearchList({
   firstListItem,
   setFirstListItem,
   focus,
+  closeSearchlistAfterSelection,
 }) {
   // console.log(value, list);
   const { coinData, setSelectedCoinData } = useContext(Context);
@@ -32,10 +33,10 @@ export default function SearchList({
         const data = response.data;
         selectedCoinInfo.description = data.description.en;
         if (toggle) {
-          // console.log("in first list item fetch");
+          console.log("in first list item fetch");
           setFirstListItem(selectedCoinInfo);
         } else {
-          // console.log("in else fetch");
+          console.log("in else fetch");
           setSelectedCoinDataWithDescription(selectedCoinInfo);
         }
       });
@@ -74,6 +75,7 @@ export default function SearchList({
 
   const clearDropdownList = () => {
     setAllResultsVisibility(false);
+    closeSearchlistAfterSelection();
   };
 
   const noResultsMessage = (
@@ -83,6 +85,13 @@ export default function SearchList({
       <div>Try again with a different term.</div>
     </div>
   );
+
+  const limitSizeOfSearchListContainer = () => {
+    const searchListContainer = document.querySelector(
+      ".search-list-container"
+    );
+    searchListContainer.setAttribute("id", "set-max-height");
+  };
 
   return (
     <div className="search-list-container">
@@ -95,15 +104,16 @@ export default function SearchList({
         noResultsMessage
       ) : (
         filteredList?.length > 0 &&
-        focus &&
+        // focus &&
         filteredList?.map((item, index) => {
           if (allResultsVisibility) {
             return (
               <DropdownItem
+                key={Math.floor(Math.random() * 10000)}
                 item={item}
                 fetchCoinDescription={fetchCoinDescription}
                 //setSelectedCoinData={setSelectedCoinData}
-                setAllResultsVisibility={allResultsVisibility}
+                // setAllResultsVisibility={allResultsVisibility}
                 selectedCoinDataWithDescription={
                   selectedCoinDataWithDescription
                 }
@@ -115,10 +125,11 @@ export default function SearchList({
             if (index < 4) {
               return (
                 <DropdownItem
+                  key={Math.floor(Math.random() * 10000)}
                   item={item}
                   fetchCoinDescription={fetchCoinDescription}
                   //setSelectedCoinData={setSelectedCoinData}
-                  setAllResultsVisibility={allResultsVisibility}
+                  // setAllResultsVisibility={allResultsVisibility}
                   selectedCoinDataWithDescription={
                     selectedCoinDataWithDescription
                   }
@@ -130,10 +141,12 @@ export default function SearchList({
           }
         })
       )}
-      {!allResultsVisibility && value && focus && (
+      {!allResultsVisibility && value /*&& focus*/ && (
         <div
           className="search-dropdown-see-all"
           onClick={() => {
+            console.log("clicked");
+            limitSizeOfSearchListContainer();
             setAllResultsVisibility(true);
           }}
         >

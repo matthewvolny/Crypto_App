@@ -62,7 +62,12 @@ export default function Market() {
         {scrollArray?.length !== 0 &&
           scrollArray?.map((coin, index) => {
             // if (index >= indexesinView.index1 && index < indexesinView.index2) {
-            return <TrendingCoin coin={coin} />;
+            return (
+              <TrendingCoin
+                key={Math.floor(Math.random() * 10000)}
+                coin={coin}
+              />
+            );
             // }
           })}
       </div>

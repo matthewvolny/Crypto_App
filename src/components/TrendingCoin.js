@@ -31,7 +31,7 @@ export default function TrendingCoin({ coin }) {
   }, [coin?.percentChange24hr]);
 
   return (
-    <div key={coin?.market_cap_rank} className="trending-coin-container">
+    <div className="trending-coin-container">
       <div className="trending-coin-image-and-rank-container">
         <img src={coin?.large} alt="coin-icon" />
         <div className="trending-coin-rank">#{coin?.market_cap_rank}</div>

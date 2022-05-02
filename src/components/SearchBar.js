@@ -35,15 +35,23 @@ export default function SearchBar() {
     setValue("");
   };
 
+  const [closeSearchList, setCloseSearchList] = useState(false);
+
+  const closeSearchlistAfterSelection = () => {
+    setCloseSearchList(true);
+  };
+
   return (
     <div className="searchbar-container">
       <form className="search-form" onSubmit={typedValueSearch}>
         <input
           onFocus={() => {
             setFocus(true);
+            setCloseSearchList(false);
           }}
           onBlur={() => {
             setFocus(false);
+            // setCloseSearchList(true);
           }}
           onChange={handleChange}
           value={value}
@@ -52,13 +60,14 @@ export default function SearchBar() {
         />
         <img src={magnifyingGlass} alt="search-icon" />
       </form>
-      {searchListVisibility && (
+      {searchListVisibility && !closeSearchList && (
         <SearchList
           value={value}
           clearSearchBar={clearSearchBar}
           firstListItem={firstListItem}
           setFirstListItem={setFirstListItem}
           focus={focus}
+          closeSearchlistAfterSelection={closeSearchlistAfterSelection}
         />
       )}
     </div>

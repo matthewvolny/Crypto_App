@@ -6,16 +6,16 @@ import "./searchList.css";
 export default function DropdownItem({
   item,
   fetchCoinDescription,
-  //   setSelectedCoinData,
+  //setSelectedCoinData,
   setAllResultsVisibility,
   selectedCoinDataWithDescription,
   clearSearchBar,
   clearDropdownList,
 }) {
-  const { selectedCoinData, setSelectedCoinData } = useContext(Context);
+  const { selectedCoinData, setSelectedCoinData, setCurrentRoute } =
+    useContext(Context);
   return (
     <div
-      key={item.id}
       className="search-item"
       onMouseEnter={() => {
         console.log("item on hover");
@@ -24,11 +24,11 @@ export default function DropdownItem({
       }}
     >
       <NavLink
-        //!this onEnter gets called over and over
         className="search-dropdown-navlink"
         onClick={() => {
-          console.log(selectedCoinData);
+          setCurrentRoute("chart");
           setSelectedCoinData(selectedCoinDataWithDescription);
+          console.log(selectedCoinData);
           clearSearchBar();
           clearDropdownList();
         }}

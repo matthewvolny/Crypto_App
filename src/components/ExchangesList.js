@@ -25,7 +25,12 @@ export default function ExchangesList({ exchangesInfo }) {
       <div className="exchanges-list">
         {exchangesInfo?.length !== 0 &&
           exchangesInfo?.map((exchange) => {
-            return <BarChart exchange={exchange} />;
+            return (
+              <BarChart
+                key={Math.floor(Math.random() * 10000)}
+                exchange={exchange}
+              />
+            );
           })}
       </div>
     </>

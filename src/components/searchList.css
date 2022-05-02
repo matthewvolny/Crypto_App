@@ -14,6 +14,11 @@
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
+#set-max-height {
+  max-height: 550px;
+  overflow: scroll;
+}
+
 .search-list-container > div {
   margin-top: 4rem;
 }

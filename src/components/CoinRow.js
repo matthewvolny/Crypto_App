@@ -106,7 +106,6 @@ export default function CoinRow(props) {
       <NavLink
         className="coinlist-navlink"
         to={`/currencies/${name}`}
-        key={rank}
         onMouseEnter={() => {
           fetchCoinDescription(props.coin);
         }}

@@ -1,6 +1,48 @@
+.bitcoin-and-ethereum-market-container {
+  margin-top: 6.3rem;
+  /* border: 1px solid red; */
+  padding: 0em 1em;
+  margin-right: 1rem;
+}
+
 .bitcoin-and-ethereum-headers {
   color: #fed425;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   letter-spacing: 0.05rem;
+}
+
+.bitcoin-price-and-percentage,
+.ethereum-price-and-percentage {
+  display: flex;
+  margin-top: 0.9rem;
+}
+
+.btc-and-eth-market-price {
+  font-size: 1.1rem;
+}
+
+.bitcoin-price-and-percentage div,
+.ethereum-price-and-percentage div {
+  color: white;
+}
+
+.bitcoin-price-and-percentage div + div,
+.ethereum-price-and-percentage div + div {
+  margin-top: 0;
+  margin-left: 0.5em;
+  font-size: 0.9rem;
+  padding-top: 0.2em;
+}
+
+.bitcoin-and-ethereum-percent-parentheses {
+  position: relative;
+  bottom: 1px;
+}
+
+.bitcoin-market-volume,
+.ethereum-market-volume {
+  color: white;
+  font-size: 1.1rem;
+  margin-top: 0.9rem;
 }

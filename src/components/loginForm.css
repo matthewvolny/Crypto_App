@@ -5,7 +5,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(117, 125, 145, 0);
+  /* background-color: rgba(117, 125, 145, 0.2); */
   width: 100vw;
   visibility: hidden;
   transition: all 350ms ease-in-out;
@@ -19,22 +19,45 @@
   bottom: 0;
   right: 0;
   background-color: white;
-  width: 400px;
-  height: 600px;
-  padding: 1.5em 2em;
-  border: 1px solid tan;
+  width: 430px;
+  height: 725px;
+  padding: 2em 2.5em;
+  border: 1px solid rgb(220, 220, 220);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
   border-radius: 1em;
+}
+
+.form-input {
+  margin-top: 0.6rem;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.8rem;
+  border-radius: 1.25em;
 }
 
 .heading {
   font-size: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.form-input-headings {
+  /* font-weight: 500; */
+  letter-spacing: 0.02em;
+}
+
+.login-paragraph {
+  line-height: 1.35rem;
+}
+
+.form-disclaimer {
+  font-size: 0.9rem;
+  line-height: 1.35rem;
 }
 
 .close-button {
   width: 35px;
   position: absolute;
   right: 30px;
-  top: 10px;
+  top: 15px;
 }
 
 .close-button:hover {
@@ -45,15 +68,37 @@
   color: purple;
 }
 
-.button {
-  padding: 0.6em 0.8em;
-  border: 1px solid rgb(227, 163, 227);
-  border-radius: 1em;
+.link:hover {
+  cursor: pointer;
 }
 
-.button:hover {
+.login-form-button {
+  display: block;
+  margin-top: 1.5rem;
+  padding: 0.8em 1em;
+  border: 1px solid #5e80ff;
+  border-radius: 1.25em;
+  background-color: white;
+  font-size: 0.85em;
+  letter-spacing: 0.02em;
+}
+
+.signup-form-button {
+  display: block;
+  margin-top: 1.5rem;
+  padding: 0.8em 1em;
+  border: 1px solid #5e80ff;
+  border-radius: 1.25em;
+  background-color: white;
+  font-size: 0.85em;
+  letter-spacing: 0.02em;
+}
+
+.login-form-button:hover,
+.signup-form-button:hover {
   color: white;
-  background-color: rgb(227, 163, 227);
+  background-color: #5e80ff;
+  cursor: pointer;
 }
 
 #hidden {

@@ -162,7 +162,7 @@ export default function LoginForm({
                   className="close-button"
                   src={closeIcon}
                 />
-                <div>
+                <div className="login-paragraph">
                   Gain access to additional features such as a personal
                   Watchlist and Portfolio tracking.
                 </div>
@@ -178,49 +178,52 @@ export default function LoginForm({
                   </span>
                 </div>
               </div>
-              <div>Name</div>
+              <div className="form-input-headings">Name</div>
               <input
+                className="form-input"
                 name="name"
                 onChange={handleChange}
                 type="text"
                 value={loginInfo.name}
-                placeholder="Enter your name"
+                placeholder="Name"
               />
             </>
           )}
 
-          <div>Email Address</div>
+          <div className="form-input-headings">Email Address</div>
           <input
+            className="form-input"
             name="email"
             onChange={handleChange}
             type="email"
             value={loginInfo.email}
-            placeholder="Enter your email address..."
+            placeholder="Email"
           />
-          <div>Password</div>
+          <div className="form-input-headings">Password</div>
           <input
+            className="form-input"
             name="password"
             onChange={handleChange}
             type="password"
             value={loginInfo.password}
-            placeholder="Enter your password..."
+            placeholder="Password"
           />
-          <div>
+          {/* <div>
             Password should contain both letter and number, with minimum length
             of 8 characters
-          </div>
+          </div> */}
           {typeOfForm === "login" ? (
-            <button type="submit" className="button">
+            <button type="submit" className="login-form-button">
               Log In
             </button>
           ) : (
             <>
-              <button type="submit" className="button">
+              <button type="submit" className="signup-form-button">
                 Sign Up
               </button>
-              <div>
-                By proceeding, you agree to Cryptic's Terms of Use and Privacy
-                Policy.
+              <div className="form-disclaimer">
+                By proceeding you agree to CryptoMondo's Terms of Use and
+                Privacy Policy.
               </div>
             </>
           )}

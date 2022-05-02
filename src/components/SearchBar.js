@@ -6,7 +6,7 @@ import magnifyingGlass from "../images/magnifying-glass.png";
 import "./searchBar.css";
 
 export default function SearchBar() {
-  const { setSelectedCoinData } = useContext(Context);
+  const { setSelectedCoinData, setCurrentRoute } = useContext(Context);
   const [value, setValue] = useState("");
   const [searchListVisibility, setSearchListVisibility] = useState(true);
   const [firstListItem, setFirstListItem] = useState();
@@ -27,10 +27,11 @@ export default function SearchBar() {
   const typedValueSearch = (e) => {
     e.preventDefault();
     console.log("form submitted");
-    // console.log(firstListItem.name);
+    console.log(firstListItem.name);
     setSelectedCoinData(firstListItem);
     setFirstListItem();
     navigate(`/currencies/${firstListItem.name}`);
+    setCurrentRoute("chart");
     setValue("");
   };
 

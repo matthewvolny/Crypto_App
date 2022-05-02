@@ -90,7 +90,7 @@ function App() {
     const { data } = await axios.get(
       `https://api.coingecko.com/api/v3/coins/${coinName}/history?date=${date}`
     );
-    console.log("fetch held coin past prices");
+    // console.log("fetch held coin past prices");
     if (image) {
       return data.image.small;
     } else {
@@ -173,16 +173,15 @@ function App() {
   };
 
   const fetchAllRankedCoins = async (initialPage, stopIndex) => {
-    console.log("coinData state before copying in fetch");
-    console.log(coinData);
+    // console.log("coinData state before copying in fetch");
+    // console.log(coinData);
     const coinDataArray = [...coinData];
     for (let i = initialPage; i <= stopIndex; i++) {
       const { data } = await axios.get(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=${i}&sparkline=true&price_change_percentage=24h%2C7d`
       );
-
-      console.log("fetch of all coin data");
-      console.log(data);
+      // console.log("fetch of all coin data");
+      // console.log(data);
       data.forEach((coin) => {
         //!may want to add sorting on coin rank
         // if (coin.rank) {
@@ -208,8 +207,8 @@ function App() {
     const sortedCoinDataArray = coinDataArray.sort((a, b) => {
       return a.rank - b.rank;
     });
-    console.log("second coinData fetch (sorted coin data)");
-    console.log(sortedCoinDataArray); //coin data sorted
+    // console.log("second coinData fetch (sorted coin data)");
+    // console.log(sortedCoinDataArray); //coin data sorted
     setCoinData(sortedCoinDataArray); //!not sorted in state (probably missing an update)
   };
 
@@ -239,7 +238,7 @@ function App() {
             shortestLength = currentNumber.length;
             smallestNumber = currentNumber;
           }
-          console.log("exhcange and shortest#");
+          // console.log("exchange and shortest#");
           // console.log(exchange);
           // console.log(smallestNumber);
           const divisor = "1".padEnd(shortestLength, "0");
@@ -299,6 +298,9 @@ function App() {
             //totalVolume1Week: await fetchExchangeVolume(exchange.id, "7"),
           });
         });
+        exchangeArray.sort((a, b) => {
+          return a.trustScoreRank - b.trustScoreRank;
+        });
         setExchangesInfo(exchangeArray);
       });
   };
@@ -344,7 +346,7 @@ function App() {
 
   //(1) fetch initial set of coins, then a larger set of all ranked coins
   useEffect(() => {
-    console.log("should only run once");
+    // console.log("should only run once");
     //console.log(coinData)
     //fetchInitialCoinSet();
     fetchTopExchanges();
@@ -379,6 +381,7 @@ function App() {
         setBarChartRerenderAtLoginClick,
         barChartRerenderAtHomeHover,
         setBarChartRerenderAtHomeHover,
+        // exchangesInfo,
       }}
     >
       <div className="container">

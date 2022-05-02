@@ -88,7 +88,8 @@ export default function SearchList({
     <div className="search-list-container">
       {/* //!for "!value" put infocus for search bar */}
       {focus && !value ? (
-        <div>Trending Coins...</div>
+        // <div>Trending Coins...</div>
+        <></>
       ) : filteredList?.length === 0 && value ? (
         noResultsMessage
       ) : (

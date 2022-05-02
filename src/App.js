@@ -247,11 +247,29 @@ function App() {
           //const subtractor = 0;
           // console.log("subtractor");
           // console.log(subtractor);
-          shortenedFormattedData.push({
-            value:
-              (parseFloat(totalVolumePerUnitTime) / divisor - subtractor) * 7,
-            name: moment(day.name).format("hh:mm a"),
-          });
+          //!format time for display ease (loses some accuracy)
+          console.log("moment formatting");
+          const momentTime = moment(day.name).format("hh:mm a");
+          console.log(momentTime);
+          const frontEnd = momentTime.slice(0, 2);
+          const backEnd = momentTime.slice(6, 8);
+          const rejoinedMomentTime = frontEnd + " " + backEnd;
+          console.log(rejoinedMomentTime);
+          if (rejoinedMomentTime[0] === "0") {
+            const rejoinedTimeStringWithoutZero =
+              rejoinedMomentTime.substring(1);
+            shortenedFormattedData.push({
+              value:
+                (parseFloat(totalVolumePerUnitTime) / divisor - subtractor) * 7,
+              name: rejoinedTimeStringWithoutZero,
+            });
+          } else {
+            shortenedFormattedData.push({
+              value:
+                (parseFloat(totalVolumePerUnitTime) / divisor - subtractor) * 7,
+              name: rejoinedMomentTime,
+            });
+          }
           totalVolumePerUnitTime = 0;
         }
       });

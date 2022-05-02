@@ -95,7 +95,7 @@ export default function BarChart({ exchange }) {
           //valueLabel={}
           //!does not seem to work
           //hasSingleBarHighlight={false}
-          percentageAxisToMaxRatio={1.3}
+          percentageAxisToMaxRatio={1.2}
           //   usePercentage={true}
           //! does not work well nameLabel={50}
           //margin={{ top: 5, bottom: 5, left: 5, right: 5 }}

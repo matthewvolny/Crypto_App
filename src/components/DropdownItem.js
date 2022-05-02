@@ -12,8 +12,12 @@ export default function DropdownItem({
   clearSearchBar,
   clearDropdownList,
 }) {
-  const { selectedCoinData, setSelectedCoinData, setCurrentRoute } =
-    useContext(Context);
+  const {
+    selectedCoinData,
+    setSelectedCoinData,
+    setCurrentRoute,
+    setHighlightChart,
+  } = useContext(Context);
   return (
     <div
       className="search-item"
@@ -31,6 +35,9 @@ export default function DropdownItem({
           console.log(selectedCoinData);
           clearSearchBar();
           clearDropdownList();
+          //!remove highlighting from sidebar "coins", and highlight "chart"
+          //not currently working
+          //setHighlightChart(true);
         }}
         to={`/currencies/${item.name}`}
       >

@@ -4,6 +4,7 @@ import "./coinlistNavigation.css";
 export default function CoinListNavigation({
   scrollCoinList,
   lastIndexOfScrollArray,
+  coinData,
 }) {
   useEffect(() => {
     const backButton = document.querySelector(".coin-navigation-backwards");
@@ -15,29 +16,34 @@ export default function CoinListNavigation({
   }, [lastIndexOfScrollArray]);
 
   return (
-    <div className="coinlist-naviation-container">
-      <div>Showing 1 - 15 of 3600</div>
-
-      <div>
-        <img alt="left arrow" />
-        <div
-          className="coin-navigation-backwards"
-          onClick={() => scrollCoinList("backward")}
-        >
-          Backward
-        </div>
+    <div className="coinlist-navigation-container">
+      <div className="coinlist-showing-number">
+        Showing {lastIndexOfScrollArray - 4} - {lastIndexOfScrollArray + 1}{" "}
+        of&nbsp;
+        {coinData.length}
       </div>
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-      <div>5</div>
-      <div>6</div>
-      <div>...</div>
-      <div>last page</div>
-      <div>
-        <img alt="right arrow" />
-        <div onClick={() => scrollCoinList("forward")}>Forward</div>
+      <div className="coin-list-navigation-bar">
+        <div>
+          {/* <img alt="left arrow" /> */}
+          <div
+            className="coin-navigation-backwards"
+            onClick={() => scrollCoinList("backward")}
+          >
+            Backward
+          </div>
+        </div>
+
+        <div className="coinlist-navigation-current-page">
+          {Math.ceil(lastIndexOfScrollArray / 6)}
+        </div>
+        <div>{Math.ceil(lastIndexOfScrollArray / 6) + 1}</div>
+        <div>{Math.ceil(lastIndexOfScrollArray / 6) + 2}</div>
+        <div>...</div>
+        <div>{Math.ceil(coinData.length / 6)}</div>
+        <div>
+          {/* <img alt="right arrow" /> */}
+          <div onClick={() => scrollCoinList("forward")}>Forward</div>
+        </div>
       </div>
     </div>
   );

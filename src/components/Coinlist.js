@@ -71,6 +71,7 @@ export default function Coinlist({ coinData }) {
         <CoinListNavigation
           scrollCoinList={scrollCoinList}
           lastIndexOfScrollArray={lastIndexOfScrollArray}
+          coinData={coinData}
         />
       </div>
     </div>

@@ -37,8 +37,10 @@ export default function DropdownItem({
         <div className="search-item-icon-container">
           <img className="icon" alt="search-icon" src={item.image} />
         </div>
-        <div className="search-item-name">{item.name}</div>
-        <div className="search-item-symbol">{item.symbol.toUpperCase()}</div>
+        <div className="search-item-name-and-symbol-container">
+          <div className="search-item-name">{item.name}</div>
+          <div className="search-item-symbol">{item.symbol.toUpperCase()}</div>
+        </div>
         <div className="search-item-rank">#{item.rank}</div>
       </NavLink>
     </div>

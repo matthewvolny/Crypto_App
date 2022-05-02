@@ -84,3 +84,14 @@
   border-radius: 0.4rem;
   font-size: 0.9rem;
 }
+
+.search-dropdown-see-all {
+  text-align: center;
+  /* border: 1px solid red; */
+  margin-bottom: 1.7rem;
+}
+
+.search-dropdown-parentheses {
+  position: relative;
+  bottom: 1px;
+}

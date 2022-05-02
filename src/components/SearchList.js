@@ -132,12 +132,14 @@ export default function SearchList({
       )}
       {!allResultsVisibility && value && focus && (
         <div
+          className="search-dropdown-see-all"
           onClick={() => {
             setAllResultsVisibility(true);
           }}
         >
-          See all results
-          {filteredList.length > 0 && "(" + filteredList.length + ")"}
+          See all results <span className="search-dropdown-parentheses">(</span>
+          {filteredList.length > 0 && filteredList.length}
+          <span className="search-dropdown-parentheses">)</span>
         </div>
       )}
     </div>

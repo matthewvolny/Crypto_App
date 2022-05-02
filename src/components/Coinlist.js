@@ -24,32 +24,27 @@ export default function Coinlist({ coinData }) {
       setLastIndexOfScrollArray(lastIndex);
       console.log(lastIndexOfScrollArray); //should be 11
       setClickScrollArray(scrollArrayCopy);
-    } else if (direction === "backward" && lastIndexOfScrollArray !== 5) {
-      // scrollArrayCopy = []; //array with next 6 coins
-      // let lastIndex = lastIndexOfScrollArray;
-      // for (let i = 0; i < 6; i++) {
-      //   scrollArrayCopy.push(coinData[lastIndex + 1]);
-      //   lastIndex = lastIndex + 1;
-      // }
-      // console.log("scrollArrayCopy"); //should be 7 - 12
-      // console.log(scrollArrayCopy);
-      // setLastIndexOfScrollArray(lastIndex);
-      // console.log(lastIndexOfScrollArray); //should be 11
-      // setClickScrollArray(scrollArrayCopy);
+    } else if (direction === "backward") {
+      console.log("in backward");
+      scrollArrayCopy = [];
+      let lastIndex = lastIndexOfScrollArray; //11
+      // let lastIndexOfPriorCoinArray = lastIndex - 6; //5
+      let lastIndexOfPriorCoinArray = lastIndex - 12;
+      // for (5; 5 >=0 ;i--)
+      console.log("data for for loop");
+      console.log(lastIndex);
+      for (let i = 0; i < 6; i++) {
+        console.log("in for loop");
+        scrollArrayCopy.push(coinData[lastIndexOfPriorCoinArray + 1]);
+        lastIndexOfPriorCoinArray = lastIndexOfPriorCoinArray + 1;
+      }
+      console.log("data after for loop"); //should be 7 - 12
+      console.log(scrollArrayCopy);
+      console.log(lastIndex);
+      setLastIndexOfScrollArray(lastIndexOfPriorCoinArray);
+      console.log(lastIndexOfScrollArray); //should be 11
+      setClickScrollArray(scrollArrayCopy);
     }
-
-    // console.log("shifted scroll array");
-    // console.log(scrollArrayCopy);
-    // if (lastIndexOfScrollArray >= 6) {
-    //   console.log(trendingCoins[0]);
-    //   scrollArrayCopy.push(trendingCoins[0]);
-    //   setLastIndexOfScrollArray(0);
-    // } else {
-    //   scrollArrayCopy.push(trendingCoins[lastIndexOfScrollArray + 1]);
-    //   console.log(scrollArray);
-    //   setLastIndexOfScrollArray(lastIndexOfScrollArray + 1);
-    // }
-    // setScrollArray(scrollArrayCopy);
   };
 
   useEffect(() => {
@@ -73,7 +68,10 @@ export default function Coinlist({ coinData }) {
           );
           // }
         })}
-        <CoinListNavigation scrollCoinList={scrollCoinList} />
+        <CoinListNavigation
+          scrollCoinList={scrollCoinList}
+          lastIndexOfScrollArray={lastIndexOfScrollArray}
+        />
       </div>
     </div>
   );

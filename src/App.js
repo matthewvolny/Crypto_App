@@ -71,7 +71,7 @@ function App() {
         " high"
     );
     setPageWidth(document.body.clientWidth);
-  }, 50);
+  }, 75);
 
   window.addEventListener("resize", myEfficientFn);
 

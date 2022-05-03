@@ -27,12 +27,18 @@
 }
 
 .trending-coins-navigation {
-  color: rgb(244, 195, 246);
+  color: rgb(0, 0, 0);
   /* border: 1px solid yellow; */
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 45%;
+  font-size: 1.1rem;
+  padding-right: 0.5rem;
+  letter-spacing: 0.02em;
+  /* font-weight: 500; */
+  position: relative;
+  top: 2px;
 }
 
 .trending-coins-navigation + * {
@@ -40,9 +46,10 @@
 }
 
 .trending-coins-navigation > img {
-  margin-top: 0;
-  margin-left: 0.5em;
+  margin-top: 0.2rem;
+  margin-left: 0.6em;
   height: 15px;
+
   /* border: 1px solid red; */
 }
 

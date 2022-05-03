@@ -23,7 +23,9 @@ body {
   align-items: flex-start;
   height: 90vh;
   min-width: 1065px;
-  min-height: 925px;
+  max-width: 1400px;
+  min-height: 935px;
+  max-height: 1035px;
   margin: 2.5em 3em;
   border-radius: 2.5em;
   background-color: #f1f6fc;

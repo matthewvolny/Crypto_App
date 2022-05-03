@@ -21,6 +21,14 @@ export default function ChartHeader() {
     description,
   } = selectedCoinData;
 
+  useEffect(() => {
+    if (parseFloat(percentChange24hr) > 0) {
+      setGreenOrRed("green");
+    } else {
+      setGreenOrRed("red");
+    }
+  }, [percentChange24hr]);
+
   return (
     <div className="heading-and-searchbar-flex">
       <div className="coin-header">

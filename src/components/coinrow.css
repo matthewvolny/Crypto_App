@@ -5,9 +5,37 @@
   /* background-color: rgb(255, 255, 255, 0.5); */
   width: 100%;
   border: 1px solid rgb(239, 239, 239);
-  padding: 0.8em 1.1em;
+  padding: 0.6em 1.1em;
   /* min-height: 14%; */
-  height: 98px;
+  height: 79px;
+}
+
+@media screen and (min-height: 1075px) {
+  .coin-row {
+    padding: 0.7em 1.1em;
+    height: 81px;
+  }
+}
+
+@media screen and (min-height: 1095px) {
+  .coin-row {
+    padding: 0.7em 1.1em;
+    height: 83px;
+  }
+}
+
+@media screen and (min-height: 1125px) {
+  .coin-row {
+    padding: 0.7em 1.1em;
+    height: 85px;
+  }
+}
+
+@media screen and (min-height: 1150px) {
+  .coin-row {
+    padding: 0.75em 1.1em;
+    height: 88px;
+  }
 }
 
 .coin-row div {

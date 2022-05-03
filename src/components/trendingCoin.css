@@ -63,7 +63,33 @@
   border: 1px solid rgb(236, 236, 236);
   padding: 1em;
   width: 200px;
+  min-height: 200px;
 }
+
+@media screen and (min-height: 1075px) {
+  .trending-coin-container {
+    min-height: 205px;
+  }
+}
+
+@media screen and (min-height: 1095px) {
+  .trending-coin-container {
+    min-height: 210px;
+  }
+}
+
+@media screen and (min-height: 1120px) {
+  .trending-coin-container {
+    min-height: 215px;
+  }
+}
+
+@media screen and (min-height: 1140px) {
+  .trending-coin-container {
+    min-height: 220px;
+  }
+}
+
 .trending-coin-container + .trending-coin-container {
   margin-left: 0.5em;
 }

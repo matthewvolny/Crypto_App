@@ -163,7 +163,7 @@ export default function Chart() {
         // borderVisible: true,
         borderColor: "black", //changed to grey
         entireTextOnly: true,
-        // drawTicks: true,
+        //drawTicks: true,
       },
       rightPriceScale: {
         visible: true,

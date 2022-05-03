@@ -60,7 +60,7 @@ export default function NewsFeed() {
           <div className="article-contents-container">
             <div className="article-title">{article.title}</div>
             {/* <div>{article.description}</div> */}
-            <div className="article-name-and-date">
+            <div className="article-name-and-link">
               <div>{article.source.name}</div>
               <a href={article.url}>Link</a>
             </div>

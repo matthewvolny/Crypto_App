@@ -71,11 +71,14 @@ function App() {
         " high"
     );
     setPageWidth(document.body.clientWidth);
-  }, 300);
+  }, 100);
 
   window.addEventListener("resize", myEfficientFn);
 
-  //!
+  //set page width at component mounting
+  useEffect(() => {
+    setPageWidth(document.body.clientWidth);
+  }, []);
 
   //(ddd)retrieves price data (mockAccountChartData) for all time (daily) and
   const fetchMockAccountBalanceChartData = async (duration) => {

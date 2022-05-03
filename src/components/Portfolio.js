@@ -228,18 +228,18 @@ export default function Portfolio(props) {
   //
   useEffect(() => {
     if (isMounted.current) {
-      if (pageWidth < 1165) {
-        setUpdatedWidth(355);
-      } else if (pageWidth >= 1165 && pageWidth < 1235) {
-        setUpdatedWidth(400);
-      } else if (pageWidth >= 1235 && pageWidth < 1315) {
-        setUpdatedWidth(450);
-      } else if (pageWidth >= 1315 && pageWidth < 1400) {
-        setUpdatedWidth(500);
-      }
-    } else {
-      isMounted.current = true;
+      // if (pageWidth < 1165) {
+      setUpdatedWidth(355);
+    } else if (pageWidth >= 1165 && pageWidth < 1235) {
+      setUpdatedWidth(400);
+    } else if (pageWidth >= 1235 && pageWidth < 1315) {
+      setUpdatedWidth(450);
+    } else if (pageWidth >= 1315 && pageWidth < 1400) {
+      setUpdatedWidth(500);
     }
+    // } else {
+    //   isMounted.current = true;
+    // }
   }, [pageWidth]);
 
   useEffect(() => {

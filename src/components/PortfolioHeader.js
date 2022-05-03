@@ -11,6 +11,7 @@ export default function PortfolioHeader({ accountData, coinData }) {
       return coin.id === "staked-ether";
     });
     if (lidoStakedEther > 0) {
+      //!could maybe set red or green here (before the return for each, then still return next line)
       return `+${lidoStakedEther.percentChange24hr}`;
     } else {
       return `${lidoStakedEther.percentChange24hr}`;
@@ -21,6 +22,14 @@ export default function PortfolioHeader({ accountData, coinData }) {
     console.log("in account header");
     console.log(accountData);
   }, [accountData]);
+
+  // useEffect(() => {
+  //   if (parseFloat(lidoStakedEther.percentChange24hr) > 0) {
+  //     setGreenOrRed24hr("green");
+  //   } else {
+  //     setGreenOrRed24hr("red");
+  //   }
+  // }, [percentChange24hr]);
 
   return (
     <div className="heading-and-searchbar-flex">

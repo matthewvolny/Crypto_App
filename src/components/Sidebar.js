@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import cryptoCharacter from "../images/crypto-logo.png";
+import cryptoCharacter from "../images/crypto-mondo-globe-modified.png";
 import axios from "axios";
 import Context from "../context/context";
 import "./sidebar.css";

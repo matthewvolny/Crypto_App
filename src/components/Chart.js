@@ -8,7 +8,7 @@ import "./chart.css";
 moment().format();
 
 export default function Chart() {
-  const { selectedCoinData, pageWidth } = useContext(Context);
+  const { selectedCoinData /*pageWidth*/ } = useContext(Context);
   const [coinChartData, setCoinChartData] = useState();
   //!set viewfield duration back to 1
   const [viewFieldDuration, setViewFieldDuration] = useState("1");
@@ -315,15 +315,6 @@ export default function Chart() {
     // globalChart = chart;
     // globalLineSeries = lineSeries;
     // globalVolumeSeries = volumeSeries;
-
-    //! Make Chart Responsive with screen resize
-    // new ResizeObserver((entries) => {
-    //   if (entries.length === 0 || entries[0].target !== chart) {
-    //     return;
-    //   }
-    //   const newRect = entries[0].contentRect;
-    //   chart.applyOptions({ height: newRect.height, width: newRect.width });
-    // }).observe(chart);
   };
 
   //(4b)change chart data(two methods)
@@ -396,29 +387,29 @@ export default function Chart() {
   }, [viewFieldDuration]);
 
   //
-  useEffect(() => {
-    if (isMounted.current) {
-      if (pageWidth < 1165) {
-        setUpdatedWidth(355);
-      } else if (pageWidth >= 1165 && pageWidth < 1235) {
-        setUpdatedWidth(400);
-      } else if (pageWidth >= 1235 && pageWidth < 1315) {
-        setUpdatedWidth(450);
-      } else if (pageWidth >= 1315) {
-        setUpdatedWidth(500);
-      }
-    } else {
-      isMounted.current = true;
-    }
-  }, [pageWidth]);
+  // useEffect(() => {
+  //   if (isMounted.current) {
+  //     if (pageWidth < 1165) {
+  //       setUpdatedWidth(355);
+  //     } else if (pageWidth >= 1165 && pageWidth < 1235) {
+  //       setUpdatedWidth(400);
+  //     } else if (pageWidth >= 1235 && pageWidth < 1315) {
+  //       setUpdatedWidth(450);
+  //     } else if (pageWidth >= 1315) {
+  //       setUpdatedWidth(500);
+  //     }
+  //   } else {
+  //     isMounted.current = true;
+  //   }
+  // }, [pageWidth]);
 
-  useEffect(() => {
-    if (isMountedTwo.current) {
-      updateChartData(coinChartData);
-    } else {
-      isMountedTwo.current = true;
-    }
-  }, [updatedWidth]);
+  // useEffect(() => {
+  //   if (isMountedTwo.current) {
+  //     updateChartData(coinChartData);
+  //   } else {
+  //     isMountedTwo.current = true;
+  //   }
+  // }, [updatedWidth, coinChartData]);
 
   return (
     <div className="chart-container">

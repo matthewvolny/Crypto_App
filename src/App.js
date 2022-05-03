@@ -19,7 +19,7 @@ import SearchBar from "./components/SearchBar";
 import ExchangesList from "./components/ExchangesList";
 import BarChart from "./components/BarChart";
 import NewsFeed from "./components/NewsFeed";
-import colorBlock from "./images/color-block-expanded.png";
+import colorBlock from "./images/color-block-expanded-trimmed.png";
 import { heldCoins, accountBalanceChartData, userInfo } from "./mockData/data";
 import BitcoinAndEthereumInfo from "./components/BitcoinAndEthereumInfo";
 import axios from "axios";
@@ -402,7 +402,7 @@ function App() {
     //fetchInitialCoinSet();
     fetchTopExchanges();
     fetchTrendingCoins();
-    fetchAllRankedCoins(1, 1);
+    fetchAllRankedCoins(1, 2);
     //fetchAllRankedCoins(1, 5);
   }, []);
 

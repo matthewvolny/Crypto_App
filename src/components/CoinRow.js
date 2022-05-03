@@ -18,6 +18,8 @@ export default function CoinRow(props) {
   } = useContext(Context);
   const [selectedCoinDataWithDescription, setSelectedCoinDataWithDescription] =
     useState();
+  const [greenOrRed24hr, setGreenOrRed24hr] = useState("black");
+  const [greenOrRed7d, setGreenOrRed7d] = useState("black");
   //const isMounted = useRef(false);
   // console.log(props);
   // const { name, price, percentChange, data } = props.coin;
@@ -35,12 +37,22 @@ export default function CoinRow(props) {
     sparkline,
   } = props.coin;
 
+  useEffect(() => {
+    if (parseFloat(percentChange24hr) > 0) {
+      setGreenOrRed24hr("green");
+    } else {
+      setGreenOrRed24hr("red");
+    }
+  }, [percentChange24hr]);
+
   //colors sparkline chart based on 7d % change
   useEffect(() => {
     if (percentChange7d > 0) {
       setSparklineColor("green");
+      setGreenOrRed7d("green");
     } else {
       setSparklineColor("red");
+      setGreenOrRed7d("red");
     }
   });
 
@@ -133,10 +145,10 @@ export default function CoinRow(props) {
           maximumFractionDigits: 2,
         })}
       </div>
-      <div className="coin-row-percent-change">
+      <div id={greenOrRed24hr} className="coin-row-percent-change">
         {<Format24HourPercentChange />}
       </div>
-      <div className="coin-row-percent-change">
+      <div id={greenOrRed7d} className="coin-row-percent-change">
         {<Format7DayPercentChange />}
       </div>
       <div className="sparkline-container">

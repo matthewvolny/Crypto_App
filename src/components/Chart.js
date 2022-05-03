@@ -368,9 +368,13 @@ export default function Chart() {
           console.log("updateChartData - same timeframe");
           //! issue is here, when you click 365 before all it is the same timeframe and cannot add weekly data to state
           //deletes the chart before rendering
+          const chartScreen = document.querySelector(".screen");
+          chartScreen.setAttribute("id", "reveal-chart");
           updateChartData(coinChartData);
         }
       } else {
+        const chartScreen = document.querySelector(".screen");
+        chartScreen.setAttribute("id", "reveal-chart");
         renderChart(coinChartData);
       }
     } else {
@@ -420,6 +424,7 @@ export default function Chart() {
             setTimeFrameToFetch={setTimeFrameToFetch}
           />
           <div className="chart"></div>
+          <div className="screen"></div>
         </div>
       </div>
     </div>

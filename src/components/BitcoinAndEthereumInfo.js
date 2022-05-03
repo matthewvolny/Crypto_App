@@ -3,6 +3,8 @@ import "./bitcoinAndEthereumInfo.css";
 
 export default function BitcoinAndEthereumInfo({ coinData }) {
   const [bitcoinAndEthereumData, setBitcoinAndEthereumData] = useState();
+  const [greenOrRedBitcoin, setGreenOrRedBitcoin] = useState("black");
+  const [greenOrRedEthereum, setGreenOrRedEthereum] = useState("black");
 
   useEffect(() => {
     const bitCoinInfo = coinData?.find((coin) => {
@@ -23,16 +25,20 @@ export default function BitcoinAndEthereumInfo({ coinData }) {
 
   const FormatPercentChangeBitcoin = () => {
     if (bitcoinAndEthereumData?.bitcoinInfo?.percentChange24hr > 0) {
+      setGreenOrRedBitcoin("green");
       return `+${bitcoinAndEthereumData?.bitcoinInfo?.percentChange24hr}`;
     } else {
+      setGreenOrRedBitcoin("red");
       return `${bitcoinAndEthereumData?.bitcoinInfo?.percentChange24hr}`;
     }
   };
 
   const FormatPercentChangeEthereum = () => {
     if (bitcoinAndEthereumData?.ethereumCoinInfo?.percentChange24hr > 0) {
+      setGreenOrRedEthereum("green");
       return `+${bitcoinAndEthereumData?.ethereumCoinInfo?.percentChange24hr}`;
     } else {
+      setGreenOrRedEthereum("red");
       return `${bitcoinAndEthereumData?.ethereumCoinInfo?.percentChange24hr}`;
     }
   };
@@ -51,7 +57,10 @@ export default function BitcoinAndEthereumInfo({ coinData }) {
             }
           )}
         </div>
-        <div>
+        <div
+          className="bitcoin-and-ethereum-percent-change-on-blue"
+          id={greenOrRedBitcoin}
+        >
           <span className="bitcoin-and-ethereum-percent-parentheses">(</span>
           {<FormatPercentChangeBitcoin />}
           <span className="bitcoin-and-ethereum-percent-parentheses">)</span>
@@ -71,7 +80,10 @@ export default function BitcoinAndEthereumInfo({ coinData }) {
             maximumFractionDigits: 2,
           })}
         </div>
-        <div>
+        <div
+          className="bitcoin-and-ethereum-percent-change-on-blue"
+          id={greenOrRedEthereum}
+        >
           <span className="bitcoin-and-ethereum-percent-parentheses">(</span>
           {<FormatPercentChangeEthereum />}
 

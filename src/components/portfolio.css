@@ -52,11 +52,111 @@
 .screen {
   position: absolute;
   background-color: white;
-  width: 425px;
+  /* background-color: blue; */
+  width: 350px;
   height: 150px;
-  top: 325px;
-  right: 330px;
+  top: 315px;
+  right: 458px;
   z-index: 10;
+}
+
+@media screen and (min-width: 1185px) {
+  .screen {
+    width: 360px;
+    height: 150px;
+    top: 315px;
+    right: 462px;
+  }
+}
+@media screen and (min-width: 1208px) {
+  .screen {
+    width: 379px;
+    height: 150px;
+    top: 315px;
+    right: 466px;
+  }
+}
+
+@media screen and (min-width: 1248px) {
+  .screen {
+    width: 403px;
+    height: 150px;
+    top: 315px;
+    right: 480px;
+  }
+}
+@media screen and (min-width: 1274px) {
+  .screen {
+    width: 413px;
+    height: 150px;
+    top: 315px;
+    right: 487px;
+  }
+}
+@media screen and (min-width: 1297px) {
+  .screen {
+    width: 425px;
+    height: 150px;
+    top: 315px;
+    right: 495px;
+  }
+}
+@media screen and (min-width: 1322px) {
+  .screen {
+    width: 440px;
+    height: 150px;
+    top: 315px;
+    right: 501px;
+  }
+}
+@media screen and (min-width: 1348px) {
+  .screen {
+    width: 460px;
+    height: 150px;
+    top: 315px;
+    right: 509px;
+  }
+}
+@media screen and (min-width: 1375px) {
+  .screen {
+    width: 473px;
+    height: 150px;
+    top: 315px;
+    right: 516px;
+  }
+}
+@media screen and (min-width: 1402px) {
+  .screen {
+    width: 495px;
+    height: 150px;
+    top: 315px;
+    right: 525px;
+  }
+}
+@media screen and (min-width: 1430px) {
+  .screen {
+    width: 500px;
+    height: 150px;
+    top: 315px;
+    right: 530px;
+  }
+}
+
+@media screen and (min-width: 1485px) {
+  .screen {
+    width: 535px;
+    height: 150px;
+    top: 315px;
+    right: 548px;
+  }
+}
+@media screen and (min-width: 1508px) {
+  .screen {
+    width: 545px;
+    height: 150px;
+    top: 315px;
+    right: 555px;
+  }
 }
 
 #reveal-chart {

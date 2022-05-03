@@ -9,6 +9,8 @@ export default function HeldCoinRow({ coin }) {
   const { accountData, coinData } = useContext(Context);
   const [heldCoinInfo, setHeldCoinInfo] = useState();
   const [sparklineColor, setSparklineColor] = useState();
+  const [greenOrRedToday, setGreenOrRedToday] = useState("black");
+  const [greenOrRedTotal, setGreenOrRedTotal] = useState("black");
 
   //calculation of todays return
   const TodaysReturn = () => {
@@ -17,11 +19,13 @@ export default function HeldCoinRow({ coin }) {
     // console.log("coin.price24HoursAgo");
     // console.log(coin.price24HoursAgo);
     if (coin.currentPrice < coin.price24HoursAgo) {
+      setGreenOrRedToday("red");
       return `-$${(
         (coin.price24HoursAgo - coin.currentPrice) *
         coin.coinNumber
       ).toFixed(2)}`;
     } else {
+      setGreenOrRedToday("green");
       return `+$${(
         (coin.currentPrice - coin.price24HoursAgo) *
         coin.coinNumber
@@ -46,11 +50,13 @@ export default function HeldCoinRow({ coin }) {
     // console.log("coin.price24HoursAgo");
     // console.log(coin.price3MonthsAgo);
     if (coin.currentPrice < coin.price3MonthsAgo) {
+      setGreenOrRedTotal("red");
       return `-$${(
         (coin.price3MonthsAgo - coin.currentPrice) *
         coin.coinNumber
       ).toFixed(2)}`;
     } else {
+      setGreenOrRedTotal("green");
       return `+$${(
         (coin.currentPrice - coin.price3MonthsAgo) *
         coin.coinNumber
@@ -67,6 +73,14 @@ export default function HeldCoinRow({ coin }) {
       return `+${((difference / coin.price3MonthsAgo) * 100).toFixed(2)}%`;
     }
   };
+
+  // useEffect(() => {
+  //   if (parseFloat(percentChange24hr) > 0) {
+  //     setGreenOrRedToday("green");
+  //   } else {
+  //     setGreenOrRedToday("red");
+  //   }
+  // }, [percentChange24hr]);
 
   return (
     <div className="held-coins-row">
@@ -90,12 +104,20 @@ export default function HeldCoinRow({ coin }) {
         ${Number(coin.marketValue.toFixed(2)).toLocaleString("en-US")}
       </div>
       <div className="return-and-percentage">
-        <div className="todays-return">{<TodaysReturn />}</div>
-        <div className="todays-return-percent">{<TodaysPercentReturn />}</div>
+        <div id={greenOrRedToday} className="todays-return">
+          {<TodaysReturn />}
+        </div>
+        <div id={greenOrRedToday} className="todays-return-percent">
+          {<TodaysPercentReturn />}
+        </div>
       </div>
       <div className="return-and-percentage">
-        <div className="total-return">{<TotalReturn />}</div>
-        <div className="todays-return-percent">{<TotalPercentReturn />}</div>
+        <div id={greenOrRedTotal} className="total-return">
+          {<TotalReturn />}
+        </div>
+        <div id={greenOrRedTotal} className="todays-return-percent">
+          {<TotalPercentReturn />}
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 .bitcoin-and-ethereum-market-container {
-  margin-top: 6.3rem;
+  margin-top: 4.9rem;
   /* border: 1px solid red; */
   padding: 0em 1em;
   margin-right: 1rem;
@@ -35,6 +35,10 @@
   padding-top: 0.2em;
 }
 
+.bitcoin-and-ethereum-percent-change-on-blue {
+  /* background-color: rgb(255, 255, 255, 0.8); */
+}
+
 .bitcoin-and-ethereum-percent-parentheses {
   position: relative;
   bottom: 1px;
@@ -45,4 +49,67 @@
   color: white;
   font-size: 1.1rem;
   margin-top: 0.9rem;
+}
+
+@media screen and (min-height: 1065px) {
+  .bitcoin-and-ethereum-market-container {
+    /* margin-top: 6.3rem; */
+    margin-top: 5.1rem;
+  }
+}
+
+@media screen and (min-height: 1090px) {
+  .bitcoin-and-ethereum-market-container {
+    /* margin-top: 6.3rem; */
+    margin-top: 5.2rem;
+  }
+  .bitcoin-market-volume,
+  .ethereum-market-volume {
+    margin-top: 0.91rem;
+  }
+  .bitcoin-price-and-percentage,
+  .ethereum-price-and-percentage {
+    margin-top: 0.91rem;
+  }
+}
+
+/*  */
+@media screen and (min-height: 1105px) {
+  .bitcoin-and-ethereum-market-container {
+    /* margin-top: 6.3rem; */
+    margin-top: 5.34rem;
+  }
+  .bitcoin-market-volume,
+  .ethereum-market-volume {
+    margin-top: 0.97rem;
+  }
+  .bitcoin-price-and-percentage,
+  .ethereum-price-and-percentage {
+    margin-top: 0.97rem;
+  }
+}
+
+@media screen and (min-height: 1110px) {
+  .bitcoin-and-ethereum-market-container {
+    /* margin-top: 6.3rem; */
+    margin-top: 5.37rem;
+  }
+  .bitcoin-market-volume,
+  .ethereum-market-volume {
+    margin-top: 0.98rem;
+  }
+  .bitcoin-price-and-percentage,
+  .ethereum-price-and-percentage {
+    margin-top: 0.98rem;
+  }
+}
+
+@media screen and (min-height: 1145px) {
+  .bitcoin-and-ethereum-market-container {
+    /* margin-top: 6.3rem; */
+    margin-top: 5.5rem;
+  }
+  .bitcoin-and-ethereum-headers {
+    font-size: 1.25rem;
+  }
 }

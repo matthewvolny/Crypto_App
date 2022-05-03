@@ -19,6 +19,7 @@ export default function LoginForm({
     setAccountData,
     setBarChartRerenderAtLoginClick,
     setRetrievedUserData,
+    setReRenderBarChart,
   } = useContext(Context);
   const [loginInfo, setLoginInfo] = useState({
     name: "",
@@ -79,6 +80,7 @@ export default function LoginForm({
             name: data[0].user_name,
             watchedCoins: data[0].watched_coins,
           };
+          setReRenderBarChart(false);
           setBarChartRerenderAtLoginClick(false);
           setLoggedIn(true);
           // setRetrievedUserData({

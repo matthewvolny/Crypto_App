@@ -1,11 +1,29 @@
 .white-donut-container {
-  margin-top: 8em;
+  margin-top: 7.41em;
   border-radius: 1.5em;
   border: rgb(233, 233, 233) 1px solid;
   width: 100%;
   min-height: 318px;
   background-color: white;
   padding-top: 0.7rem;
+}
+
+@media screen and (min-height: 1120px) {
+  .white-donut-container {
+    margin-top: 7.67em;
+  }
+}
+
+@media screen and (min-height: 1140px) {
+  .white-donut-container {
+    margin-top: 7.71em;
+  }
+}
+
+@media screen and (min-height: 1160px) {
+  .white-donut-container {
+    margin-top: 7.77em;
+  }
 }
 
 .donut-chart-inner-container {
@@ -29,6 +47,41 @@
   /* border: 1px solid green; */
   padding-left: 0.6em;
   padding-right: 0.6em;
+}
+
+@media screen and (min-width: 1210px) {
+  .legend-container {
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+  }
+}
+
+@media screen and (min-width: 1250px) {
+  .legend-container {
+    padding-left: 0.85em;
+    padding-right: 0.85em;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .legend-container {
+    padding-left: 0.95em;
+    padding-right: 0.95em;
+  }
+}
+
+@media screen and (min-width: 1320px) {
+  .legend-container {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+
+@media screen and (min-width: 1410px) {
+  .legend-container {
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+  }
 }
 
 .coin-color-pair {

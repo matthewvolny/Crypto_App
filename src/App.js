@@ -43,6 +43,8 @@ function App() {
     useState(true);
   const [pageWidth, setPageWidth] = useState();
   const [retrievedUserData, setRetrievedUserData] = useState();
+  const [reRenderBarChart, setReRenderBarChart] = useState(true);
+  const [reRenderDonutChart, setReRenderDonutChart] = useState(true);
 
   //sets page width to state!
   function debounce(func, wait, immediate) {
@@ -349,10 +351,11 @@ function App() {
             //totalVolume1Week: await fetchExchangeVolume(exchange.id, "7"),
           });
         });
-        exchangeArray.sort((a, b) => {
+        const sortedExchangesArray = exchangeArray.sort((a, b) => {
           return a.trustScoreRank - b.trustScoreRank;
         });
-        setExchangesInfo(exchangeArray);
+        console.log("exchangeArraySorted");
+        setExchangesInfo(sortedExchangesArray);
       });
   };
 
@@ -362,13 +365,15 @@ function App() {
       .get("https://api.coingecko.com/api/v3/search/trending")
       .then((response) => {
         const data = response.data;
-        // console.log("trending coins data");
-        // console.log(data);
+        console.log("trending coins data");
+        console.log(data);
         // console.log(data.coins);
         const coins = data.coins;
         const trendingCoinArray = [];
         coins.forEach((coin) => {
+          // if (coin.item.market_cap_rank <= 250) {
           trendingCoinArray.push(coin.item);
+          // }
         });
         // console.log(trendingCoinArray);
         setTrendingCoinsLocal(trendingCoinArray);
@@ -448,6 +453,10 @@ function App() {
         pageWidth,
         // retrievedUserData,
         // setRetrievedUserData,
+        reRenderBarChart,
+        setReRenderBarChart,
+        reRenderDonutChart,
+        setReRenderDonutChart,
       }}
     >
       <div className="container">

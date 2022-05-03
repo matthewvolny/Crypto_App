@@ -13,7 +13,7 @@ export default function Portfolio(props) {
   const isMountedTwo = useRef(false);
   const [updatedWidth, setUpdatedWidth] = useState(355);
   const [viewFieldDuration, setViewFieldDuration] = useState("1");
-  const [chartMinSecVisibility, setChartMinSecVisibility] = useState();
+  const [chartMinSecVisibility, setChartMinSecVisibility] = useState(true);
   const [chartToggle, setChartToggle] = useState(false);
   const { accountBalanceChartData, heldCoins } = props?.accountData;
   const [lastDataUsedToMakeChart, setLastDataUsedToMakeChart] = useState();
@@ -250,6 +250,22 @@ export default function Portfolio(props) {
       isMountedTwo.current = true;
     }
   }, [updatedWidth]);
+
+  //!cannot get this to work just right
+  useEffect(() => {
+    if (viewFieldDuration === "365" || viewFieldDuration === "max") {
+      setChartMinSecVisibility(false);
+      //updateChartData(lastDataUsedToMakeChart);
+    } else {
+      setChartMinSecVisibility(true);
+    }
+  }, [viewFieldDuration]);
+
+  // useEffect(() => {
+  //   if (chartMinSecVisibility) {
+  //     updateChartData(lastDataUsedToMakeChart);
+  //   }
+  // }, [chartMinSecVisibility]);
 
   return (
     <div className="chart-container">

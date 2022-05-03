@@ -11,10 +11,11 @@ export default function BarChart({ exchange }) {
     setBarChartRerenderAtHomeHover,
     currentRoute,
     pageWidth,
+    reRenderBarChart,
   } = useContext(Context);
   //const [highlightBarFunction, setHighlightBarFunction] = useState();
   //const [labelsSize, setLabelsSize] = useState();
-  const [animationToggle, setAnimationToggle] = useState(true);
+  const [animationToggle, setAnimationToggle] = useState(false);
   const isMounted = useRef(false);
   const isMountedTwo = useRef(false);
   const [updatedWidth, setUpdatedWidth] = useState(225);
@@ -52,18 +53,28 @@ export default function BarChart({ exchange }) {
   };
 
   //!hovering over home with market open gives a flicker (did not work, could be recombined)
+  // useEffect(() => {
+  //   if (
+  //     isMountedTwo.current ||
+  //     barChartRerenderAtLoginClick ||
+  //     barChartRerenderAtHomeHover
+  //   ) {
+  //     setAnimationToggle(false);
+  //   } else {
+  //     isMountedTwo.current = true;
+  //     setBarChartRerenderAtLoginClick(true);
+  //   }
+  // }, [barChartRerenderAtLoginClick, barChartRerenderAtHomeHover]);
+
+  // const [reRenderBarChart, setReRenderBarChart] = useState ();
+
+  //!will kill all animations
   useEffect(() => {
-    if (
-      isMounted.current &&
-      barChartRerenderAtLoginClick &&
-      barChartRerenderAtHomeHover
-    ) {
-      setAnimationToggle(false);
-    } else {
-      isMounted.current = true;
-      setBarChartRerenderAtLoginClick(true);
+    //set "true initially", login form turns to false
+    if (reRenderBarChart) {
+      setAnimationToggle(true);
     }
-  }, [barChartRerenderAtLoginClick, barChartRerenderAtHomeHover]);
+  }, []);
 
   //
   useEffect(() => {

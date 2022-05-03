@@ -1,6 +1,6 @@
 .held-coins-list-header {
   /* margin-top: 0; */
-  margin-top: -25px;
+  margin-top: -15px;
   color: #5e80ff;
   font-size: 1.3rem;
   width: 100%;
@@ -11,7 +11,7 @@
 }
 
 .held-coins-list-labels {
-  margin-top: 1.5em;
+  margin-top: 0.9em;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -99,13 +99,17 @@
   margin-top: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   position: absolute;
   top: 0;
   left: 0;
   width: 146.5%;
   padding: 0em 0em 2.5em 1.5em;
+}
+
+.held-coins-list-inner-container > .held-coins-row + .held-coins-row {
+  margin-top: 0.85rem;
 }
 
 .held-coins-row {
@@ -116,6 +120,54 @@
   background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
   padding: 0.8% 3%;
+}
+
+@media screen and (min-height: 1050px) {
+  .held-coins-list-header {
+    margin-top: -12px;
+  }
+  .held-coins-list-inner-container > .held-coins-row + .held-coins-row {
+    margin-top: 0.86rem;
+  }
+  .held-coins-row {
+    padding: 0.9% 3%;
+  }
+}
+
+@media screen and (min-height: 1070px) {
+  .held-coins-list-header {
+    margin-top: -10px;
+  }
+  .held-coins-list-inner-container > .held-coins-row + .held-coins-row {
+    margin-top: 0.9rem;
+  }
+  .held-coins-row {
+    padding: 1% 3%;
+  }
+}
+
+@media screen and (min-height: 1090px) {
+  .held-coins-list-header {
+    margin-top: -8px;
+  }
+  .held-coins-list-inner-container > .held-coins-row + .held-coins-row {
+    margin-top: 1.1rem;
+  }
+  .held-coins-row {
+    padding: 1.1% 3%;
+  }
+}
+
+@media screen and (min-height: 1125px) {
+  .held-coins-list-header {
+    margin-top: -6px;
+  }
+  .held-coins-list-inner-container > .held-coins-row + .held-coins-row {
+    margin-top: 1.1rem;
+  }
+  .held-coins-row {
+    padding: 1.2% 3%;
+  }
 }
 
 .held-coins-row > div + div {

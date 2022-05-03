@@ -4,12 +4,32 @@ import { Donut, Legend } from "britecharts-react";
 import Context from "../context/context";
 
 export default function DonutChart() {
-  const { accountData, setAccountData } = useContext(Context);
+  const {
+    accountData,
+    setAccountData,
+    reRenderDonutChart,
+    setReRenderDonutChart,
+  } = useContext(Context);
   //const [highlightedSlice, setHighlightedSlice] = useState();
   // const isMounted = useRef(false);
   const [indexedHeldCoins, setIndexedHeldCoins] = useState();
-  const [animationToggle, setAnimationToggle] = useState(true);
+  const [animationToggle, setAnimationToggle] = useState(false);
   const isMounted = useRef(false);
+
+  useEffect(() => {
+    //set "true initially", login form turns to false
+    if (reRenderDonutChart) {
+      setAnimationToggle(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isMounted.current /*&& animationToggle*/) {
+      setReRenderDonutChart(false);
+    } else {
+      isMounted.current = true;
+    }
+  }, []);
 
   //!accoutn data held coins needs to look like this
   // [
@@ -94,14 +114,6 @@ export default function DonutChart() {
       </div>
     );
   });
-
-  useEffect(() => {
-    if (isMounted.current && animationToggle) {
-      setAnimationToggle(false);
-    } else {
-      isMounted.current = true;
-    }
-  }, []);
 
   return (
     <div className="white-donut-container">

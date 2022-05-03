@@ -33,3 +33,17 @@
   color: white;
   background-color: rgb(227, 163, 227);
 }
+
+.logout-button {
+  position: relative;
+}
+
+.welcome-message {
+  position: absolute;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: rgb(249, 143, 244);
+  right: 700px;
+  top: 22px;
+  letter-spacing: 0.02em;
+}

@@ -410,7 +410,7 @@ function App() {
     //fetchInitialCoinSet();
     fetchTopExchanges();
     fetchTrendingCoins();
-    fetchAllRankedCoins(1, 2);
+    fetchAllRankedCoins(1, 4);
     //fetchAllRankedCoins(1, 5);
   }, []);
 

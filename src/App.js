@@ -41,6 +41,39 @@ function App() {
     useState(true);
   const [barChartRerenderAtHomeHover, setBarChartRerenderAtHomeHover] =
     useState(true);
+  const [pageWidth, setPageWidth] = useState();
+  const [retrievedUserData, setRetrievedUserData] = useState();
+
+  //sets page width to state!
+  function debounce(func, wait, immediate) {
+    var timeout;
+    return function () {
+      var context = this,
+        args = arguments;
+      var later = function () {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  }
+
+  var myEfficientFn = debounce(function () {
+    console.log(
+      document.body.clientWidth +
+        " wide by " +
+        document.body.clientHeight +
+        " high"
+    );
+    setPageWidth(document.body.clientWidth);
+  }, 300);
+
+  window.addEventListener("resize", myEfficientFn);
+
+  //!
 
   //(ddd)retrieves price data (mockAccountChartData) for all time (daily) and
   const fetchMockAccountBalanceChartData = async (duration) => {
@@ -378,6 +411,18 @@ function App() {
     setLoggedIn(false);
   };
 
+  // useEffect(() => {
+  //   // if (toggle && accountData) {
+  //   console.log("in use effect in app setting user account data");
+  //   setAccountData({
+  //     ...accountData,
+  //     userInfo: retrievedUserData,
+  //   });
+  //   // setToggle(false);
+  //   // console.log("in use effect else");
+  //   // }
+  // }, [retrievedUserData]);
+
   return (
     <Context.Provider
       value={{
@@ -400,6 +445,9 @@ function App() {
         barChartRerenderAtHomeHover,
         setBarChartRerenderAtHomeHover,
         // exchangesInfo,
+        pageWidth,
+        // retrievedUserData,
+        // setRetrievedUserData,
       }}
     >
       <div className="container">

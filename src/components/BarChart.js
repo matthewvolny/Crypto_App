@@ -10,12 +10,14 @@ export default function BarChart({ exchange }) {
     barChartRerenderAtHomeHover,
     setBarChartRerenderAtHomeHover,
     currentRoute,
+    pageWidth,
   } = useContext(Context);
   //const [highlightBarFunction, setHighlightBarFunction] = useState();
   //const [labelsSize, setLabelsSize] = useState();
   const [animationToggle, setAnimationToggle] = useState(true);
   const isMounted = useRef(false);
   const isMountedTwo = useRef(false);
+  const [updatedWidth, setUpdatedWidth] = useState(225);
 
   //!for 1 day timestamps are every 10 minutes (24 x6)
   //!for 1 week timestamps are every hour (24 x7)
@@ -26,6 +28,11 @@ export default function BarChart({ exchange }) {
     //!week data on button click
     //return exchangesInfo.volume1Week;
   };
+  // const [exchangeVolume1Day, setExchangeVolume1Day] = useState();
+
+  // useEffect(() => {
+  //   setExchangeVolume1Day(exchange.volume1Day);
+  // }, [exchange]);
 
   //misc sample color schemas
   //https://github.com/britecharts/britecharts/blob/master/src/charts/helpers/color.js
@@ -58,6 +65,31 @@ export default function BarChart({ exchange }) {
     }
   }, [barChartRerenderAtLoginClick, barChartRerenderAtHomeHover]);
 
+  //
+  useEffect(() => {
+    if (isMounted.current) {
+      if (pageWidth < 1165) {
+        setUpdatedWidth(225);
+      } else if (pageWidth >= 1165 && pageWidth < 1235) {
+        setUpdatedWidth(245);
+      } else if (pageWidth >= 1235 && pageWidth < 1315) {
+        setUpdatedWidth(260);
+      } else if (pageWidth >= 1315) {
+        setUpdatedWidth(275);
+      }
+    } else {
+      isMounted.current = true;
+    }
+  }, [pageWidth]);
+
+  // useEffect(() => {
+  //   if (isMountedTwo.current) {
+  //     setExchangeVolume1Day(exchange.volume1Day);
+  //   } else {
+  //     isMountedTwo.current = true;
+  //   }
+  // }, [updatedWidth]);
+
   return (
     <div
       key={Math.floor(Math.random() * 10000)}
@@ -79,7 +111,7 @@ export default function BarChart({ exchange }) {
           data={barData}
           colorSchema={colorPalette}
           isAnimated={animationToggle}
-          width={225}
+          width={updatedWidth}
           height={150}
           yTicks={3}
           labelsSize={2}
@@ -95,7 +127,7 @@ export default function BarChart({ exchange }) {
           //valueLabel={}
           //!does not seem to work
           //hasSingleBarHighlight={false}
-          percentageAxisToMaxRatio={1.2}
+          percentageAxisToMaxRatio={1.1}
           //   usePercentage={true}
           //! does not work well nameLabel={50}
           //margin={{ top: 5, bottom: 5, left: 5, right: 5 }}

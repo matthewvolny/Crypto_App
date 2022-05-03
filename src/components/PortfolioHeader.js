@@ -17,6 +17,11 @@ export default function PortfolioHeader({ accountData, coinData }) {
     }
   };
 
+  useEffect(() => {
+    console.log("in account header");
+    console.log(accountData);
+  }, [accountData]);
+
   return (
     <div className="heading-and-searchbar-flex">
       <div className="portfolio-header">

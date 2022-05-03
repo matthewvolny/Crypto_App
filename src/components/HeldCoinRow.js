@@ -12,10 +12,10 @@ export default function HeldCoinRow({ coin }) {
 
   //calculation of todays return
   const TodaysReturn = () => {
-    console.log("coin.currentprice");
-    console.log(coin.currentPrice);
-    console.log("coin.price24HoursAgo");
-    console.log(coin.price24HoursAgo);
+    // console.log("coin.currentprice");
+    // console.log(coin.currentPrice);
+    // console.log("coin.price24HoursAgo");
+    // console.log(coin.price24HoursAgo);
     if (coin.currentPrice < coin.price24HoursAgo) {
       return `-$${(
         (coin.price24HoursAgo - coin.currentPrice) *
@@ -41,10 +41,10 @@ export default function HeldCoinRow({ coin }) {
 
   //calculation of total return
   const TotalReturn = () => {
-    console.log("coin.currentprice");
-    console.log(coin.currentPrice);
-    console.log("coin.price24HoursAgo");
-    console.log(coin.price3MonthsAgo);
+    // console.log("coin.currentprice");
+    // console.log(coin.currentPrice);
+    // console.log("coin.price24HoursAgo");
+    // console.log(coin.price3MonthsAgo);
     if (coin.currentPrice < coin.price3MonthsAgo) {
       return `-$${(
         (coin.price3MonthsAgo - coin.currentPrice) *

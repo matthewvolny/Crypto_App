@@ -8,13 +8,13 @@ import "./chart.css";
 moment().format();
 
 export default function Chart() {
-  const { selectedCoinData } = useContext(Context);
+  const { selectedCoinData, pageWidth } = useContext(Context);
   const [coinChartData, setCoinChartData] = useState();
   //!set viewfield duration back to 1
   const [viewFieldDuration, setViewFieldDuration] = useState("1");
   const [timeFrameToFetch, setTimeFrameToFetch] = useState("90");
   const [chartMinSecVisibility, setChartMinSecVisibility] = useState();
-  const [updatedWidth, setUpdatedWidth] = useState(350);
+  const [updatedWidth, setUpdatedWidth] = useState(355);
   const isMounted = useRef(false);
   const isMountedTwo = useRef(false);
   //const isMountedTwo = useRef(false);
@@ -44,12 +44,12 @@ export default function Chart() {
         console.log("fetched data");
         console.log(data);
         //formats "price" data based on whether it is in "days" or "hrs"
-        const priceData = data.prices;
+        const priceData = data?.prices;
         const priceDataArray = [];
         if (duration === "max") {
           //if viewfield set to "max"
           console.log(`data in "week" format`);
-          for (let i = priceData.length - 1; i >= 0; i--) {
+          for (let i = priceData?.length - 1; i >= 0; i--) {
             if (i % 7 === 0) {
               priceDataArray.unshift({
                 time: moment(priceData[i][0]).format("MM/DD/YYYY"),
@@ -83,7 +83,7 @@ export default function Chart() {
         if (duration === "max") {
           //if viewfield set to "max"
           console.log(`data in "week" format`);
-          for (let i = volumeData.length - 1; i >= 0; i--) {
+          for (let i = volumeData?.length - 1; i >= 0; i--) {
             if (i % 7 === 0) {
               volumeDataArray.unshift({
                 time: moment(volumeData[i][0]).format("MM/DD/YYYY"),
@@ -230,7 +230,7 @@ export default function Chart() {
       visible: true,
     });
     // console.log(coinChartData.prices);
-    lineSeries.setData(coinChartData.prices);
+    lineSeries.setData(coinChartData?.prices);
 
     //!way to update chart, though I do believe it also rerenders all the other data (not sure)
     // if (dataToAdd) {
@@ -333,7 +333,7 @@ export default function Chart() {
     //!two approaches to replacing data in chart
     //!(1)-delete chart
     const previousChart = document.querySelector(".tv-lightweight-charts");
-    previousChart.remove();
+    previousChart?.remove();
     renderChart(newData);
 
     // //!(2)-delete series (presumably faster(?), not sure)
@@ -396,52 +396,29 @@ export default function Chart() {
   }, [viewFieldDuration]);
 
   //
-  //
-  function debounce(func, wait, immediate) {
-    var timeout;
-    return function () {
-      var context = this,
-        args = arguments;
-      var later = function () {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
-  }
-
-  var myEfficientFn = debounce(function () {
-    // All the taxing stuff you do
-    console.log(
-      document.body.clientWidth +
-        " wide by " +
-        document.body.clientHeight +
-        " high"
-    );
-    if (document.body.clientWidth > 1330) {
-      setUpdatedWidth(450);
-    } else if (document.body.clientWidth < 1330) {
-      setUpdatedWidth(350);
+  useEffect(() => {
+    if (isMounted.current) {
+      if (pageWidth < 1165) {
+        setUpdatedWidth(355);
+      } else if (pageWidth >= 1165 && pageWidth < 1235) {
+        setUpdatedWidth(400);
+      } else if (pageWidth >= 1235 && pageWidth < 1315) {
+        setUpdatedWidth(450);
+      } else if (pageWidth >= 1315) {
+        setUpdatedWidth(500);
+      }
+    } else {
+      isMounted.current = true;
     }
-  }, 250);
+  }, [pageWidth]);
 
   useEffect(() => {
     if (isMountedTwo.current) {
-      if (updatedWidth === 450) {
-        console.log("width >600");
-        updateChartData(coinChartData);
-      } else if (updatedWidth === 350) {
-        updateChartData(coinChartData);
-      }
+      updateChartData(coinChartData);
     } else {
       isMountedTwo.current = true;
     }
   }, [updatedWidth]);
-
-  window.addEventListener("resize", myEfficientFn);
 
   return (
     <div className="chart-container">

@@ -22,7 +22,8 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   height: 90vh;
-  min-width: 1000px;
+  min-width: 1065px;
+  min-height: 925px;
   margin: 2.5em 3em;
   border-radius: 2.5em;
   background-color: #f1f6fc;

@@ -3,6 +3,7 @@ import closeIcon from "../images/close-icon.png";
 import "./loginForm.css";
 import Context from "../context/context";
 import axios from "axios";
+import { userInfo } from "../mockData/data";
 
 export default function LoginForm({
   typeOfForm,
@@ -17,6 +18,7 @@ export default function LoginForm({
     accountData,
     setAccountData,
     setBarChartRerenderAtLoginClick,
+    setRetrievedUserData,
   } = useContext(Context);
   const [loginInfo, setLoginInfo] = useState({
     name: "",
@@ -24,7 +26,7 @@ export default function LoginForm({
     email: "",
   });
   const [userId, setUserId] = useState();
-  const [retrievedUserData, setRetrievedUserData] = useState();
+  // const [retrievedUserData, setRetrievedUserData] = useState();
 
   const hideLoginForm = () => {
     const loginContainer = document.querySelector(".login-container");
@@ -63,13 +65,27 @@ export default function LoginForm({
           //!can display something to the screen here, and clear input
           console.log("login failed");
         } else {
-          setBarChartRerenderAtLoginClick(false);
-          setLoggedIn(true);
-          setRetrievedUserData({
+          console.log("in else after retrieving login info");
+          // setAccountData({
+          //   ...accountData,
+          //   userInfo: {
+          //     accountNumber: data[0].account_number,
+          //     name: data[0].user_name,
+          //     watchedCoins: data[0].watched_coins,
+          //   },
+          // });
+          userInfo = {
             accountNumber: data[0].account_number,
             name: data[0].user_name,
             watchedCoins: data[0].watched_coins,
-          });
+          };
+          setBarChartRerenderAtLoginClick(false);
+          setLoggedIn(true);
+          // setRetrievedUserData({
+          //   accountNumber: data[0].account_number,
+          //   name: data[0].user_name,
+          //   watchedCoins: data[0].watched_coins,
+          // });
           hideLoginForm();
         }
       })
@@ -78,17 +94,19 @@ export default function LoginForm({
       });
   };
 
-  const [toggle, setToggle] = useState(true);
+  // const [toggle, setToggle] = useState(true);
 
-  useEffect(() => {
-    if (toggle && accountData) {
-      setAccountData({
-        ...accountData,
-        userInfo: retrievedUserData,
-      });
-      setToggle(false);
-    }
-  }, [accountData]);
+  // useEffect(() => {
+  //   // if (toggle && accountData) {
+  //   console.log("in use effect in form setting account data");
+  //   setAccountData({
+  //     ...accountData,
+  //     userInfo: retrievedUserData,
+  //   });
+  //   // setToggle(false);
+  //   // console.log("in use effect else");
+  //   // }
+  // }, [retrievedUserData]);
 
   //signs up user
   const signupUser = (loginInfo) => {

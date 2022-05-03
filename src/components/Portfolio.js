@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-// import Context from "../context/context";
+import Context from "../context/context";
 import PortfolioChartControls from "./PortfolioChartControls";
 import DonutChart from "./DonutChart";
 import LineChartComp from "./LineChartComp";
@@ -8,17 +8,19 @@ import { createChart } from "lightweight-charts";
 import "./portfolio.css";
 
 export default function Portfolio(props) {
+  const { pageWidth } = useContext(Context);
   const isMounted = useRef(false);
-  const [updatedWidth, setUpdatedWidth] = useState(350);
+  const isMountedTwo = useRef(false);
+  const [updatedWidth, setUpdatedWidth] = useState(355);
   const [viewFieldDuration, setViewFieldDuration] = useState("1");
   const [chartMinSecVisibility, setChartMinSecVisibility] = useState();
   const [chartToggle, setChartToggle] = useState(false);
-
   const { accountBalanceChartData, heldCoins } = props?.accountData;
+  const [lastDataUsedToMakeChart, setLastDataUsedToMakeChart] = useState();
 
   //(4a)renders the chart
   const renderChart = (accountBalanceData) => {
-    console.log(accountBalanceData);
+    // console.log(accountBalanceData);
     const chart = createChart(document.querySelector(".chart"), {
       width: updatedWidth,
       height: 210,
@@ -182,18 +184,22 @@ export default function Portfolio(props) {
     if (document.querySelector(".tv-lightweight-charts")) {
       if (viewFieldDuration === "365" || viewFieldDuration === "max") {
         updateChartData(accountBalanceChartData.dayData);
+        setLastDataUsedToMakeChart(accountBalanceChartData.dayData);
       } else {
         updateChartData(accountBalanceChartData.hourData);
+        setLastDataUsedToMakeChart(accountBalanceChartData.hourData);
       }
     } else {
       if (viewFieldDuration === "365" || viewFieldDuration === "max") {
         const chartScreen = document.querySelector(".screen");
         chartScreen.setAttribute("id", "reveal-chart");
         renderChart(accountBalanceChartData.dayData);
+        setLastDataUsedToMakeChart(accountBalanceChartData.dayData);
       } else {
         const chartScreen = document.querySelector(".screen");
         chartScreen.setAttribute("id", "reveal-chart");
         renderChart(accountBalanceChartData.hourData);
+        setLastDataUsedToMakeChart(accountBalanceChartData.hourData);
       }
     }
     // } else {
@@ -218,6 +224,32 @@ export default function Portfolio(props) {
   //   // }
   //   // console.log("component mounted");
   // }, [viewFieldDuration]);
+
+  //
+  useEffect(() => {
+    if (isMounted.current) {
+      if (pageWidth < 1165) {
+        setUpdatedWidth(355);
+      } else if (pageWidth >= 1165 && pageWidth < 1235) {
+        setUpdatedWidth(400);
+      } else if (pageWidth >= 1235 && pageWidth < 1315) {
+        setUpdatedWidth(450);
+      } else if (pageWidth >= 1315 && pageWidth < 1400) {
+        setUpdatedWidth(500);
+      }
+    } else {
+      isMounted.current = true;
+    }
+  }, [pageWidth]);
+
+  useEffect(() => {
+    if (isMountedTwo.current) {
+      //!
+      updateChartData(lastDataUsedToMakeChart);
+    } else {
+      isMountedTwo.current = true;
+    }
+  }, [updatedWidth]);
 
   return (
     <div className="chart-container">

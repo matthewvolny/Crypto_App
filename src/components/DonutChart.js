@@ -33,8 +33,8 @@ export default function DonutChart() {
   };
 
   const handleMouseOver = (data) => {
-    console.log("Mouse Over");
-    console.log(data);
+    // console.log("Mouse Over");
+    // console.log(data);
     setAnimationToggle(false);
     //setHighlightedSlice(data.data.id);
   };
@@ -66,8 +66,8 @@ export default function DonutChart() {
       for (let i = 0; i < sortedArrayDesc.length; i++) {
         sortedArrayDesc[i].color = colorPalette[i];
       }
-      console.log("sortedArrayDesc");
-      console.log(sortedArrayDesc);
+      // console.log("sortedArrayDesc");
+      // console.log(sortedArrayDesc);
       //setIndexedHeldCoins(sortedArrayDesc);
       setAccountData({
         ...accountData,
@@ -80,8 +80,8 @@ export default function DonutChart() {
   }, []);
 
   const coinLegend = accountData.heldCoins?.map((coin) => {
-    console.log("coin");
-    console.log(coin);
+    // console.log("coin");
+    // console.log(coin);
     return (
       <div key={Math.floor(Math.random() * 10000)} className="legend-container">
         <div className="coin-color-pair">

@@ -1,15 +1,15 @@
 .white-donut-container {
-  margin-top: 2.8em;
+  margin-top: 8em;
   border-radius: 1.5em;
-  border: pink 1px solid;
+  border: rgb(233, 233, 233) 1px solid;
   width: 100%;
-  min-height: 320px;
+  min-height: 318px;
   background-color: white;
-  /* padding: 0.5em; */
+  padding-top: 0.7rem;
 }
 
 .donut-chart-inner-container {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   padding: 0.5em;
   display: flex;
   justify-content: center;
@@ -26,9 +26,9 @@
   display: flex;
   justify-content: space-between;
   margin-top: 0;
-  border: 1px solid green;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  /* border: 1px solid green; */
+  padding-left: 0.6em;
+  padding-right: 0.6em;
 }
 
 .coin-color-pair {
@@ -42,4 +42,8 @@
   border-radius: 0.5em;
   width: 35px;
   height: 10px;
+}
+
+.donut-text {
+  font-size: 200px !important;
 }

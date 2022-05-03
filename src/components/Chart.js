@@ -8,7 +8,7 @@ import "./chart.css";
 moment().format();
 
 export default function Chart() {
-  const { selectedCoinData /*pageWidth*/ } = useContext(Context);
+  const { selectedCoinData, pageWidth } = useContext(Context);
   const [coinChartData, setCoinChartData] = useState();
   //!set viewfield duration back to 1
   const [viewFieldDuration, setViewFieldDuration] = useState("1");
@@ -391,29 +391,31 @@ export default function Chart() {
   }, [viewFieldDuration]);
 
   //
-  // useEffect(() => {
-  //   if (isMounted.current) {
-  //     if (pageWidth < 1165) {
-  //       setUpdatedWidth(355);
-  //     } else if (pageWidth >= 1165 && pageWidth < 1235) {
-  //       setUpdatedWidth(400);
-  //     } else if (pageWidth >= 1235 && pageWidth < 1315) {
-  //       setUpdatedWidth(450);
-  //     } else if (pageWidth >= 1315) {
-  //       setUpdatedWidth(500);
-  //     }
-  //   } else {
-  //     isMounted.current = true;
-  //   }
-  // }, [pageWidth]);
+  useEffect(() => {
+    // if (isMounted.current) {
+    if (pageWidth < 1165) {
+      setUpdatedWidth(355);
+    } else if (pageWidth >= 1165 && pageWidth < 1235) {
+      setUpdatedWidth(400);
+    } else if (pageWidth >= 1235 && pageWidth < 1315) {
+      setUpdatedWidth(450);
+    } else if (pageWidth >= 1315) {
+      setUpdatedWidth(500);
+    }
+    // } else {
+    //   isMounted.current = true;
+    // }
+  }, [pageWidth]);
 
-  // useEffect(() => {
-  //   if (isMountedTwo.current) {
-  //     updateChartData(coinChartData);
-  //   } else {
-  //     isMountedTwo.current = true;
-  //   }
-  // }, [updatedWidth, coinChartData]);
+  useEffect(() => {
+    if (isMountedTwo.current) {
+      if (coinChartData) {
+        updateChartData(coinChartData);
+      }
+    } else {
+      isMountedTwo.current = true;
+    }
+  }, [updatedWidth, coinChartData]);
 
   return (
     <div className="chart-container">

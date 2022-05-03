@@ -81,7 +81,7 @@ export default function CoinlistHeader({ coinData, setCoinData }) {
             Price
           </div>
           <div
-            className="coinlist-header-percent"
+            className="coinlist-header-percent coinlist-24hr-percent"
             onClick={() => sortCoinList("percentChange24hr")}
           >
             24hr%

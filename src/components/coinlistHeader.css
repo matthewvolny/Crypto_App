@@ -88,6 +88,12 @@
   color: #fed425;
 }
 
+@media screen and (min-width: 1405px) {
+  .coinlist-24hr-percent {
+    color: #3b60e5;
+  }
+}
+
 .coinlist-header-sparkline {
   width: 23.5%;
   /* border: 1px solid red; */

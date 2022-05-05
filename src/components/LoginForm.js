@@ -52,8 +52,9 @@ export default function LoginForm({
 
   //login user and retrieve user data
   const loginUser = (loginInfo) => {
+    // axios
+    // .get("http://localhost:3000/login", {
     axios
-      // .get("http://localhost:3000/login", {
       .get("/login", {
         params: {
           loginInfo,

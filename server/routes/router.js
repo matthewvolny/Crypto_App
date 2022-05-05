@@ -2,21 +2,21 @@ const express = require("express"),
   router = express.Router(),
   pgPromise = require("pg-promise")();
 
-// const config = {
-//   host: "ruby.db.elephantsql.com",
-//   port: 5432,
-//   database: "rlkucqpz",
-//   user: "rlkucqpz",
-//   password: "5wViybi8DQjHztp6qgzqbW0UczeQhh6h",
-// };
-
 const config = {
-  host: "localhost",
+  host: "chunee.db.elephantsql.com",
   port: 5432,
-  database: "Crypto_App",
-  user: "matthewvolny",
-  password: "Ronweasley1@@@",
+  database: "tackfzcc",
+  user: "tackfzcc",
+  password: "Mc-99hstlqIgw4sH3LaZrYQRsNfGjVCm",
 };
+
+// const config = {
+//   host: "localhost",
+//   port: 5432,
+//   database: "Crypto_App",
+//   user: "matthewvolny",
+//   password: "Ronweasley1@@@",
+// };
 
 const database = pgPromise(config);
 

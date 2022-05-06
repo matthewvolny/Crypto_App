@@ -9,6 +9,7 @@
     "axios": "^0.26.1",
     "britecharts": "^2.18.0",
     "britecharts-react": "^0.6.5",
+    "cors": "^2.8.5",
     "lightweight-charts": "^3.8.0",
     "moment": "^2.29.2",
     "react": "^18.0.0",

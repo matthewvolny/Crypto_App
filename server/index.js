@@ -4,7 +4,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 3000;
 const cors = require("cors");
-
+//
 app.use(cors());
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));

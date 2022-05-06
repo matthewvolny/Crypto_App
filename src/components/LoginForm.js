@@ -53,7 +53,7 @@ export default function LoginForm({
   //login user and retrieve user data
   const loginUser = (loginInfo) => {
     // axios
-    // .get("http://localhost:3000/login", {
+    //   .get("http://localhost:3000/login", {
     axios
       .get("/login", {
         params: {
@@ -117,8 +117,9 @@ export default function LoginForm({
     console.log("in signup user");
     const randomNum = Math.floor(1000 + Math.random() * 9000);
     console.log(randomNum);
+    //   axios
+    // .post("http://localhost:3000/signup", {
     axios
-      // .post("http://localhost:3000/signup", {
       .post("/signup", {
         loginInfo: loginInfo,
         accountNumber: randomNum,
